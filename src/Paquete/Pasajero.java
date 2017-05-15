@@ -1,14 +1,26 @@
 package Paquete;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 
-public class Pasajero extends Persona
+public class Pasajero extends Persona implements Serializable 
 {
 	String ciudadOrigen;//Ciudad de origen.
 	String domicilioOrigen;//Domicilio en el que vive.
 	//Hacer metodo para almacenar historial de pasajero en el hotel.
-	FileOutputStream historial=new FileOutputStream("Historial.sd");//Posible opcion para almacenar el historial de cada pasajero.
+	/*
+	FileOutputStream historial;
+	try
+	{
+		historial new FileOutputStream("Historial.sd");//Posible opcion para almacenar el historial de cada pasajero.
+	}
+	catch(FileNotFoundException ex)
+	{
+		System.out.println("No se pudo crear el archivo: "+ex);
+	}
 	
+	*/
 	
 	public Pasajero()
 	{
