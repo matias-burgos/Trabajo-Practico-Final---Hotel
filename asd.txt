@@ -1,0 +1,20 @@
+FileOutputStream d;
+		FileInputStream l;
+		try {
+			d = new FileOutputStream ("Discos.dat");
+			l = new FileInputStream ("Discos.dat");
+			ObjectOutputStream  discosArch=new ObjectOutputStream (d);
+			ObjectInputStream lectura= new ObjectInputStream(l);
+			discosArch.writeObject(disco1);
+			Discos aux = (Discos)lectura.readObject();
+			System.out.println(aux.cantante);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
