@@ -2,8 +2,11 @@ package Paquete;
 
 public class Habitacion {
 		boolean ocupada;//Si la habitacion se encuentra ocupada (true) o disponible (false)
+		int numero;//Numero de habitacion.
+		int piso;//Piso de habitacion.
+		int cantMax;//Cantidad maxima de pasajeros.
+		 
 		
-		//Posibles atributos:
 		int periodoOcupacion;//Es el periodo por el que la habitacion esta ocupada.
 		//Datos del cliente que alquila la habitacion.
 		String nombre;
