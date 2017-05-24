@@ -1,52 +1,77 @@
 package Paquete;
 
+
+import java.util.ArrayList;
+
 public class Habitacion {
-		boolean ocupada;//Si la habitacion se encuentra ocupada (true) o disponible (false)
+		
+		//Datos de habitacion:
 		int numero;//Numero de habitacion.
 		int piso;//Piso de habitacion.
 		int cantMax;//Cantidad maxima de pasajeros.
-		 
-		
+		boolean ocupada;//Si la habitacion se encuentra ocupada (true) o disponible (false)
 		int periodoOcupacion;//Es el periodo por el que la habitacion esta ocupada.
-		//Datos del cliente que alquila la habitacion.
-		String nombre;
-		int dni;
-		String ciudadOrigen;
-		String domicilioOrigen;
+		boolean reservada;//Si la habitacion se encuentra reservada (true) o disponible(false)
 		
-		public Habitacion()
+		
+		//Datos de habitantes de la habitacion.
+		Pasajero reserva;//Guarda los datos de la persona que realiza la reserva.
+		ArrayList<Pasajero>listaHabitantes=new ArrayList<>();//Lista de personas en la habitacion.
+		Pasajero responsable;//Persona que alquila la habitacion.
+		Extras cargossExtras;
+		
+		public Habitacion()//Inicializacion.
 		{
 			ocupada=true;
-			
+			reservada=false;
+			numero=0;
+			piso=0;
+			cantMax=0;
 			//
 			periodoOcupacion=0;
-			nombre="";
-			dni=0;
-			ciudadOrigen="";
-			domicilioOrigen="";
 		}
+		public Habitacion(int numero, int piso, int cantMax)//Asigna valores a la habitacion cuando es creada por el administrador.
+		{
+			this.numero=numero;
+			this.piso=piso;
+			this.cantMax=cantMax;
+		}
+		
+		public void asignarHabitacion(Pasajero responsable, ArrayList<Pasajero> pasajeros)//Asigna y ocupa una habitacion.
+		{
+			this.responsable=responsable;
+			listaHabitantes=pasajeros;
+			ocupada=true;
+		}
+		
 		
 		public int getPeriodo()
 		{
 			return periodoOcupacion;
 		}
-		public String getNombreClient()
+		public void getResponsable()//Muestra la informacion del pasajeros que alquila la habitacion.
 		{
-			return nombre;
+			responsable.MostrarDatos();
+		}
+		public void getHabitantes()
+		{
+			int i=1;//Utilizado para contar cantidad de personas y para muestreo.
+			for(Pasajero aux:listaHabitantes)
+			{
+				System.out.println("------------------------------------------ Habitante "+i+"------------------------------------------");
+				aux.MostrarDatos();
+				i++;
+			}
 		}
 		
-		public int getDNI()
-		{
-			return dni;
-		}
+		//***********Hacer metodo para agregar extras.*************
 		
-		public String getCiudadClient()
+		
+		
+		public void Reserva(Pasajero responsable)
 		{
-			return ciudadOrigen;
-		}
-		public String getDomicilioClient()
-		{
-			return domicilioOrigen;
+			reserva=responsable;
+			reservada=true;
 		}
 		public boolean getCupada()
 		{

@@ -42,5 +42,13 @@ public class Pasajero extends Persona implements Serializable
 	{
 		return domicilioOrigen;
 	}
+	public void MostrarDatos()//Muestra todos los gets juntos.
+	{
+		System.out.println("Nombre: "+ getNombre());
+		System.out.println("DNI: "+getDNI());
+		System.out.println("Ciudad de origen: "+getCiudad());
+		System.out.println("Domicilio de procedenci: "+getDomicilio());
+		
+	}
 	
 }
