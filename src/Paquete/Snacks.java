@@ -1,3 +1,4 @@
+package Paquete;
 
 public class Snacks extends Extras
 {

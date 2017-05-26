@@ -1,3 +1,4 @@
+package Paquete;
 
 public class Extras //extends Ocupacion
 {
