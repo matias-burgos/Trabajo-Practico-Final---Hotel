@@ -2,7 +2,7 @@ package Paquete;
 
 public class UserHotel extends Persona{
 	String user;//Nombre de usuario.
-	String contrasenha;//Contraseña del usuario.
+	String contrasenha;//ContraseÃ±a del usuario.
 	
 	public UserHotel()
 	{
