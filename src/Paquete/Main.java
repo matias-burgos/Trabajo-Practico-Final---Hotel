@@ -4,7 +4,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Persona adm=new Administrador();
+		Habitacion nueva=new Habitacion (127, 2, 4);
+		nueva.MostrarHabitacion();
 
 	}
 

@@ -20,7 +20,10 @@ public class Netflix
 	{
 		return tiempo;
 	}
-	
+	public void setTiempo(double tiempo)
+	{
+		this.tiempo=tiempo;
+	}
 	public double getCosto()
 	{
 		return costo;

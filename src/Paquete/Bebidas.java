@@ -1,6 +1,6 @@
 package Paquete;
 
-public class Bebidas extends Extras
+public class Bebidas extends Extras 
 {
 	 String nombre;
 	 double precio;
@@ -36,5 +36,6 @@ public class Bebidas extends Extras
 	 {
 		 this.precio=precio;
 	 }
+
 	
 }

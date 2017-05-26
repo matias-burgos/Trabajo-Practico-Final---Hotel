@@ -92,7 +92,7 @@ public class Habitacion {
 		
 		
 		
-		public void Reserva(Pasajero responsable)
+		public void Reserva(Pasajero responsable)//Asigna a reserva el pasajero que realiza la reserva.
 		{
 			reserva=responsable;
 			reservada=true;
@@ -101,12 +101,12 @@ public class Habitacion {
 		{
 			return ocupada;
 		}
-		public void MostrarHabitacion()
+		public void MostrarHabitacion()//Muestra todos los datos de la habitacion.
 		{
 			System.out.println("Numero de habitacion: "+getNumero());
 			System.out.println("Piso de la habitacion: "+getPiso());
 			System.out.println("Cantidad maxima de habitantes de la habitacion: "+getMaxHabi());
-			if(getReservado()==true)
+			if(getReservado()==true)//Evalua si hay alguna reserva hecha para mostrar info del responsable.
 			{
 				System.out.println("La habitacion se encuentra reservada");
 				System.out.println("El responsable de la reserva: "+getReserva());
@@ -115,9 +115,9 @@ public class Habitacion {
 			{
 				System.out.println("La habitacion no esta reservada");
 			}
-			if(getOcupada()==true)
+			if(getOcupada()==true)//Evalua si la habitacion esta ocupada para mostrar la info del responsable y sus habitantes.
 			{
-				System.out.println("La habitacion se encuentra: "+getOcupada());
+				System.out.println("La habitacion se encuentra ocupada ");
 				System.out.println("Responsable de la habitacion:");
 				getResponsable();
 				System.out.println("Lista de Habitantes de la habitacion:");
@@ -127,7 +127,7 @@ public class Habitacion {
 			}
 			else 
 			{
-				System.out.println("La habitacion se encuentra: "+getOcupada());
+				System.out.println("La habitacion se encuentra desocupada");
 			}
 			
 			
