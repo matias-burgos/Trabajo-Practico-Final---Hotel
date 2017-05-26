@@ -101,7 +101,7 @@ public class Habitacion {
 			System.out.println("Numero de habitacion: "+getNumero());
 			System.out.println("Piso de la habitacion: "+getPiso());
 			System.out.println("Cantidad maxima de habitantes de la habitacion: "+getMaxHabi());
-			System.out.println("La habitacion se encuentra: "+if(getOcupada()==true){System.out.println("Ocupada");}else {System.out.println("Desocupada");});
+			//System.out.println("La habitacion se encuentra: "+if(getOcupada()==true){System.out.println("Ocupada");}else {System.out.println("Desocupada");});
 			if(ocupada==true)
 			{
 				System.out.println("Lista de habitantes: ");
