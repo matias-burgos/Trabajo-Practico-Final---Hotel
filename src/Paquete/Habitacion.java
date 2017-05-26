@@ -77,10 +77,15 @@ public class Habitacion {
 		{
 			return cantMax;
 		}
+		public boolean getReservado()//Retorna un boolean si la habitacion estareservada o no.
+		{
+			return reservada;
+		}
 		public Pasajero getReserva()//Retorna el pasajero que reservo la habitacion.
 		{
 			return reserva;
 		}
+		
 		
 		
 		//***********Hacer metodo para agregar extras.*************
@@ -101,11 +106,31 @@ public class Habitacion {
 			System.out.println("Numero de habitacion: "+getNumero());
 			System.out.println("Piso de la habitacion: "+getPiso());
 			System.out.println("Cantidad maxima de habitantes de la habitacion: "+getMaxHabi());
-			//System.out.println("La habitacion se encuentra: "+if(getOcupada()==true){System.out.println("Ocupada");}else {System.out.println("Desocupada");});
-			if(ocupada==true)
+			if(getReservado()==true)
 			{
-				System.out.println("Lista de habitantes: ");
+				System.out.println("La habitacion se encuentra reservada");
+				System.out.println("El responsable de la reserva: "+getReserva());
 			}
+			else
+			{
+				System.out.println("La habitacion no esta reservada");
+			}
+			if(getOcupada()==true)
+			{
+				System.out.println("La habitacion se encuentra: "+getOcupada());
+				System.out.println("Responsable de la habitacion:");
+				getResponsable();
+				System.out.println("Lista de Habitantes de la habitacion:");
+				getHabitantes();
+				System.out.println("Periodo de ocupacion: "+getPeriodo());
+				//System.out.println("Cargos extras: "+getCargos());
+			}
+			else 
+			{
+				System.out.println("La habitacion se encuentra: "+getOcupada());
+			}
+			
+			
 			
 		}
 		
