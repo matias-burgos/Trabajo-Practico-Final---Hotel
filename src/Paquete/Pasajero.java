@@ -13,6 +13,7 @@ import java.io.Serializable;
 
 public class Pasajero extends Persona implements Serializable 
 {
+	
 	String ciudadOrigen;//Ciudad de origen.
 	String domicilioOrigen;//Domicilio en el que vive.
 	Habitacion actual;//Informacion sobre la habitacion en la que se encuentra.

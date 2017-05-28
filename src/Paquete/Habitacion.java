@@ -18,7 +18,7 @@ public class Habitacion {
 		Pasajero reserva;//Guarda los datos de la persona que realiza la reserva.
 		ArrayList<Pasajero>listaHabitantes=new ArrayList<>();//Lista de personas en la habitacion.
 		Pasajero responsable;//Persona que alquila la habitacion.
-		Extras cargossExtras;
+		Extras cargosExtras;
 		
 		public Habitacion()//Inicializacion.
 		{
@@ -89,7 +89,14 @@ public class Habitacion {
 		
 		
 		//***********Hacer metodo para agregar extras.*************
-		
+		public void InfoExtras()
+		{
+			cargosExtras.MostrarExtras();//Muestra todos los cargos extras junto a la cantidad y precio total de cada uno.
+			float resultado=cargosExtras.TotalExtras();//Obtiene la cantidad a pagar de los extras de la habitacion.
+			System.out.println("El cargo total a pagar por los servicios extras es de: $"+resultado);//Muestra el resultado final a pagar.
+			
+			
+		}
 		
 		
 		public void Reserva(Pasajero responsable)//Asigna a reserva el pasajero que realiza la reserva.
