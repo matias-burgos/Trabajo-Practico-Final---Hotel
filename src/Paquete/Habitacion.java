@@ -89,6 +89,9 @@ public class Habitacion {
 		
 		
 		//***********Hacer metodo para agregar extras.*************
+		
+		
+		//Muestreo de informacion de extras.
 		public void InfoExtras()
 		{
 			cargosExtras.MostrarExtras();//Muestra todos los cargos extras junto a la cantidad y precio total de cada uno.
@@ -104,6 +107,7 @@ public class Habitacion {
 			reserva=responsable;
 			reservada=true;
 		}
+		
 		public boolean getOcupada()
 		{
 			return ocupada;

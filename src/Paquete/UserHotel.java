@@ -27,10 +27,7 @@ public class UserHotel extends Persona{
 		this.user=user;
 	}
 	
-	public String setContrasenha()
-	{
-		return contrasenha;
-	}
+	
 	public void setContrasenha(String contra)
 	{
 		contrasenha=contra;
