@@ -88,7 +88,7 @@ public class Habitacion {
 		
 		
 		
-		//***********Hacer metodo para agregar extras.*************
+		//Metodo para agregar extras.
 		
 		public void PonerExtras()
 		{
