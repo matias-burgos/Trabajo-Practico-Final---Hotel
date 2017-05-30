@@ -3,7 +3,7 @@ package Paquete;
 public class Bebidas extends Extras 
 {
 	 String nombre;
-	 double precio;
+	 double precio;dfgdsjñklfñjklgjklgfñjlkkñl
 	 
 	 public Bebidas()
 	 {
