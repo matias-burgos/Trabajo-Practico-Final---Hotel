@@ -2,28 +2,28 @@ package Paquete;
 
 public class Pan extends Extras
 {
-	double peso;
-	double costo; //por kilo
+	int paquete;
+	double costo; //por paquete
 	
 	public Pan()
 	{
-		peso=0;
+		paquete=0;
 		costo=0;
 	}
 	
-	public Pan(double peso, double costo)
+	public Pan(int paquete, double costo)//paquete posee 0, ya que se lñe agrega la cantidad en otro metodo.
 	{
-		this.peso=peso;
+		this.paquete=paquete;
 		this.costo=costo;
 	}
 	
-	public double getPeso()
+	public double getpaquete()
 	{
-		return peso;
+		return paquete;
 	}
-	public void setPeso(double peso)
+	public void setPaquete(int paquete)
 	{
-		this.peso=peso;
+		this.paquete=paquete;
 	}
 	
 	public double getCosto()
@@ -35,10 +35,14 @@ public class Pan extends Extras
 		this.costo=costo;
 	}
 	
-	public double calcularPrecio(double tiempo, double costo)
+	public double calcularPrecio()
 	{
-		double precioFinal=0;
-		precioFinal = tiempo*costo;
+		double precioFinal = paquete*costo;
 		return precioFinal;
+	}
+	
+	public void pedidos(int cantidad) // Le mete a la variable "paquete" la cantidad pedida de pansito
+	{
+		paquete = cantidad;
 	}
 }

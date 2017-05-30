@@ -90,12 +90,19 @@ public class Habitacion {
 		
 		//***********Hacer metodo para agregar extras.*************
 		
+		public void PonerExtras()
+		{
+			if(getOcupada()==true)
+			{
+				cargosExtras=new Extras();
+			}
+		}
 		
 		//Muestreo de informacion de extras.
 		public void InfoExtras()
 		{
 			cargosExtras.MostrarExtras();//Muestra todos los cargos extras junto a la cantidad y precio total de cada uno.
-			float resultado=cargosExtras.TotalExtras();//Obtiene la cantidad a pagar de los extras de la habitacion.
+			double resultado=cargosExtras.TotalExtras();//Obtiene la cantidad a pagar de los extras de la habitacion.
 			System.out.println("El cargo total a pagar por los servicios extras es de: $"+resultado);//Muestra el resultado final a pagar.
 			
 			

@@ -4,11 +4,13 @@ public class Snacks extends Extras
 {
 	String nombre;
 	double precio;
+	int cantidad; //Para saber cuantos agarro
 	
 	public Snacks()
 	 {
 		 nombre = "";
 		 precio = 0;
+		 cantidad = 0;
 	 }
 	 
 	 public Snacks(String nombre, double precio)
@@ -35,5 +37,24 @@ public class Snacks extends Extras
 	 public void setPrecio(double precio)
 	 {
 		 this.precio=precio;
+	 }
+	 
+	 public int getCantidad()
+	 {
+		 return cantidad;
+	 }
+	 
+	
+	 
+	 
+	 public double calcularPrecio()
+	 {
+		 double precioFinal = precio * cantidad;
+		 return precioFinal;
+	 }
+	 
+	 public void cantidadPedida(int cantidadPedida)
+	 {
+		 cantidad = cantidadPedida;
 	 }
 }

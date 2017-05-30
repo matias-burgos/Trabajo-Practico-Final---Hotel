@@ -4,11 +4,13 @@ public class Bebidas extends Extras
 {
 	 String nombre;
 	 double precio;
+	 int cantidad;
 	 
 	 public Bebidas()
 	 {
 		 nombre = "";
 		 precio = 0;
+		 cantidad = 0;
 	 }
 	 
 	 public Bebidas(String nombre, double precio)
@@ -36,6 +38,22 @@ public class Bebidas extends Extras
 	 {
 		 this.precio=precio;
 	 }
+	 
+	 public int getCantidad()
+	 {
+		 return cantidad;
+	 }
 
+	 
+	 public double calcularPrecio()
+	 {
+		 double precioFinal = precio * cantidad;
+		 return precioFinal;
+	 }
+	 
+	 public void cantidadPedida(int cantidadPedida)
+	 {
+		 cantidad = cantidadPedida;
+	 }
 	
 }
