@@ -1,6 +1,6 @@
 package Paquete;
 
-public class Netflix 
+public class Netflix extends Extras
 {
 	double tiempo;
 	double costo;
@@ -10,7 +10,7 @@ public class Netflix
 		tiempo=0;
 		costo=0;
 	}
-	public Netflix(double tiempo, double costo)
+	public Netflix(double tiempo, double costo)//Tiempo es 0 porque se le agrega el tiempo pedido en otro metodo.
 	{
 		this.tiempo=tiempo;
 		this.costo=costo;
@@ -33,10 +33,14 @@ public class Netflix
 		this.costo=costo;
 	}
 	
-	public double calcularPrecio(double tiempo, double costo)
+	public double calcularPrecio()
 	{
-		double precioFinal=0;
-		precioFinal = tiempo*costo;
+		double precioFinal= tiempo*costo;
 		return precioFinal;
+	}
+	
+	public void tiempoPedido(double tiempoPedido)
+	{
+		tiempo = tiempoPedido;
 	}
 }
