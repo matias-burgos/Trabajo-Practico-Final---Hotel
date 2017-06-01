@@ -13,11 +13,11 @@ public class Administrador extends UserHotel{
 	
 	public void getAdmin()
 	{
-		System.out.println("Nombre del administrador: "+getNombre());
-		System.out.println("DNI del administrador: "+getDNI());
-		System.out.println("Nombre de usuario del administrador: "+getUser());
+		System.out.println("Tipo de usuario: Administrador");
+		MostrarUsuario();
 		
 	}
+	
 	
 	
 }

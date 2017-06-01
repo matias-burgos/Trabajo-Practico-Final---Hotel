@@ -1,6 +1,6 @@
 package Paquete;
 
-public class Netflix extends Extras
+public class Netflix
 {
 	double tiempo;
 	double costo;

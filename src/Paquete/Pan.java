@@ -1,6 +1,6 @@
 package Paquete;
 
-public class Pan extends Extras
+public class Pan 
 {
 	int paquete;
 	double costo; //por paquete
