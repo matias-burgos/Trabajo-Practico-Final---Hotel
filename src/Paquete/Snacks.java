@@ -1,6 +1,6 @@
 package Paquete;
 
-public class Snacks extends Extras
+public class Snacks 
 {
 	String nombre;
 	double precio;
@@ -42,6 +42,11 @@ public class Snacks extends Extras
 	 public int getCantidad()
 	 {
 		 return cantidad;
+	 }
+	 
+	 public void setCantidad(int cantidad)
+	 {
+		 this.cantidad=cantidad;
 	 }
 	 
 	

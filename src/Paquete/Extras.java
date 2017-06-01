@@ -1,6 +1,5 @@
 package Paquete;
 
-import java.util.ArrayList;
 
 public class Extras //extends Ocupacion
 {
@@ -10,22 +9,59 @@ public class Extras //extends Ocupacion
 	Snacks snack;
 	Bebidas bebida;
 	
-	public Extras ()
+	public Extras ()//Se le ingresan los valores predeterminados que van a tener los productos ofrecidos.
 	{
 		pan=new Pan(0, 20);
 		netflix=new Netflix(0, 0.50);
-		snack=new Snacks("papas",50);
-		bebida=new Bebidas("Paso de los Toros", 40);
+		snack=new Snacks("papas", 50);
+		bebida=new Bebidas("pepsi", 40);
 	}
 	
-	//Muestra los extrs y las cantidades con sus respectivos precios.
-	public void MostrarExtras()
+	//Metodos de ingreso de pedidos de los pasajeros.
+	public void IngresarCantPan(int cant)//Ingresa la cantidad de paquetes de pan que pida el pasajero.
 	{
-		System.out.println("Panes: " + pan.getpaquete()+"Costo: "+pan.calcularPrecio());
-		System.out.println("Netflix: " + netflix.getTiempo() + "Costo: " + netflix.calcularPrecio());
-		System.out.println("Snacks: " + snack.getCantidad() + "Costo:" + snack.calcularPrecio());
-		System.out.println("Bebidas: " + bebida.getCantidad() + "Costo: " + bebida.calcularPrecio());
+		pan.setPaquete(cant);
 	}
+	
+	public void IngresarTempoNetflix(int tiempo)//Ingresa el tiempo de uso que utilizo el pasajero.
+	{
+		netflix.setTiempo(tiempo);
+	}
+	
+	public void IngresarCantSnacks(int cant)//Ingresa la cantidad de snacks pedidos por el pasajero.
+	{
+		snack.setCantidad(cant);
+	}
+	
+	public void IngresarCantBebidas(int cant)//Ingresa la cantidad de bebidas pedidas por el pasajero.
+	{
+		bebida.setCantidad(cant);
+	}
+	
+	
+	
+	//Muestra los extras y las cantidades con sus respectivos precios.
+	public void MostrarExtras()//Se evalua si las cnatidades son diferentes a 0(diferente a 0, hubo pedido, sino nunca se produjo dicho pedido).
+	{
+		if(pan.getpaquete()!=0)
+		{
+			System.out.println("Panes: " + pan.getpaquete()+"Costo: "+pan.calcularPrecio());
+		}
+		if(netflix.getTiempo()!=0)
+		{
+			System.out.println("Netflix: " + netflix.getTiempo() + "Costo: " + netflix.calcularPrecio());
+		}
+		if(snack.getCantidad()!=0)
+		{
+			System.out.println("Snacks: " + snack.getCantidad() + "Costo:" + snack.calcularPrecio());
+		}
+		if(bebida.getCantidad()!=0)
+		{
+			System.out.println("Bebidas: " + bebida.getCantidad() + "Costo: " + bebida.calcularPrecio());
+		}
+		
+	}
+	
 	
 	
 	//Retorna la cantidad total a pagar de los extras.
