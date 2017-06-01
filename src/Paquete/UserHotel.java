@@ -50,8 +50,11 @@ public class UserHotel extends Persona{
 	
 	public void MostrarUsuario()
 	{
-		System.out.println("Nombre de usuario: "+getNombre());
+		
+		System.out.println("Nombre de la persona: "+getNombre());
+		System.out.println("Nombre de usuario: "+getUser());
 		System.out.println("DNI: "+getDNI());
+		
 	}
 	
 	//Cambiar contraseña del usuario.

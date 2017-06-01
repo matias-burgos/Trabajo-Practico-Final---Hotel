@@ -15,7 +15,6 @@ public class Administrador extends UserHotel{
 	{
 		System.out.println("Tipo de usuario: Administrador");
 		MostrarUsuario();
-		
 	}
 	
 	
