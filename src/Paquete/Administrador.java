@@ -6,9 +6,9 @@ public class Administrador extends UserHotel{
 	{
 		super();
 	}
-	public Administrador(String nombre, int dni, String user, String contrasenha, String mail, int telefono)
+	public Administrador(String nombre, int dni, String user, String contrasenha)
 	{
-		super(nombre, dni, user, contrasenha, mail, telefono);
+		super(nombre, dni, user, contrasenha);
 	}
 	
 	public void getAdmin()
@@ -16,9 +16,6 @@ public class Administrador extends UserHotel{
 		System.out.println("Tipo de usuario: Administrador");
 		MostrarUsuario();
 	}
-	
-	
-	
 	
 	
 	

@@ -5,28 +5,21 @@ import java.util.Scanner;
 public class UserHotel extends Persona{
 	String user;//Nombre de usuario.
 	protected String contrasenha;//ContraseÃ±a del usuario.
-	String mail;
-	int telefono;
 	Scanner sc=new Scanner(System.in);
 	public UserHotel()
 	{
 		super();
 		user="";
 		contrasenha="";
-		mail="";
-		telefono=0;
 		
 	}
-	public UserHotel(String nombre, int dni, String user, String contrasenha, String mail, int telefono)
+	public UserHotel(String nombre, int dni, String user, String contrasenha)
 	{
 		super(nombre, dni);
 		this.user=user;
 		this.contrasenha=contrasenha;
-		this.mail=mail;
-		this.telefono=telefono;
 	}
 	
-	//Ingresar usuario (nombre-contraseña).
 	public String getUser()
 	{
 		return user;
@@ -36,25 +29,16 @@ public class UserHotel extends Persona{
 		this.user=user;
 	}
 	
-
-	public String getMail()
+	public int getDNI()
 	{
-		return mail;
+		return dni;
 	}
-	public void setMail(String mail)
+	public void get(int dni)
 	{
-		this.mail=mail;
-	}
-	
-	public int getTelefono()
-	{
-		return telefono;
+		this.dni=dni;
 	}
 	
-	public void setTelefono(int telefono)
-	{
-		this.telefono=telefono;
-	}
+	
 	private void setContrasenha(String contra)
 	{
 		contrasenha=contra;
