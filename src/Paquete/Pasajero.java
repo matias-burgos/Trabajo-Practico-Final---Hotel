@@ -57,7 +57,7 @@ public class Pasajero extends Persona implements Serializable
 		
 	}
 	
-	public void MostrarHistorial()
+	public void MostrarHistorial()//Muestra historial
 	{
 		FileInputStream inHistorial;
 		try
@@ -81,11 +81,13 @@ public class Pasajero extends Persona implements Serializable
 	}
 	
 	
-	public void AsignarHabitacion(Habitacion nueva)
+	public void AsignarHabitacion(Habitacion nueva)//Agarra la nueva habitacion en la que se encuentra y la guarda en el archivo de historial.
 	{
 		actual=nueva;
 		AgregarHistorial(actual);
 	}
+	public void 
+	
 	
 	public String getCiudad()
 	{

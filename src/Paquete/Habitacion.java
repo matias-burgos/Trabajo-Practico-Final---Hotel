@@ -11,7 +11,7 @@ public class Habitacion {
 		int cantMax;//Cantidad maxima de pasajeros.
 		
 		Ocupacion ocup;//Atributo que designa la ocupacion de la habitacion.
-		Reserva reserv;//Atrivutoque designa la reserva de lahabitacion.
+		Reserva reserv;//Atrivuto que designa la reserva de la habitacion.
 		
 		public Habitacion()//Inicializacion.
 		{
@@ -28,6 +28,27 @@ public class Habitacion {
 			this.numero=numero;
 			this.piso=piso;
 			this.cantMax=cantMax;
+		}
+		
+		
+		public void asignarHabitacion(Pasajero responsable, ArrayList<Pasajero> pasajeros, int periodo)//Llama a la funcion de Ocupacion para ocupar la habitacion.
+		{
+			ocup.asignarHabitacion(responsable, pasajeros, periodo);
+		}
+		
+		
+		
+		public int getNumero()
+		{
+			return numero;
+		}
+		public int getPiso()
+		{
+			return piso;
+		}
+		public int getMaxHabi()//Retorna la cantidad maxima de habitantes admitidos en la habitacion.
+		{
+			return cantMax;
 		}
 		/*
 		public void asignarHabitacion(Pasajero responsable, ArrayList<Pasajero> pasajeros)//Asigna y ocupa una habitacion.
@@ -58,18 +79,6 @@ public class Habitacion {
 			}
 		}
 		*/
-		public int getNumero()
-		{
-			return numero;
-		}
-		public int getPiso()
-		{
-			return piso;
-		}
-		public int getMaxHabi()//Retorna la cantidad maxima de habitantes admitidos en la habitacion.
-		{
-			return cantMax;
-		}
 		/*
 		public boolean getReservado()//Retorna un boolean si la habitacion estareservada o no.
 		{
@@ -119,6 +128,14 @@ public class Habitacion {
 			System.out.println("Numero de habitacion: "+getNumero());
 			System.out.println("Piso de la habitacion: "+getPiso());
 			System.out.println("Cantidad maxima de habitantes de la habitacion: "+getMaxHabi());
+			if(ocup.ocupada==true)
+			{
+				ocup.MuestreoOcupantes();
+			}
+			//if(reserv.reservada==true)
+			{
+				//reserv,
+			}
 			/*
 			if(getReservado()==true)//Evalua si hay alguna reserva hecha para mostrar info del responsable.
 			{

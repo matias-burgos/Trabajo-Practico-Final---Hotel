@@ -41,36 +41,33 @@ public class Extras
 	
 	
 	//Muestra los extras y las cantidades con sus respectivos precios.
-	public int MostrarExtras()//Se evalua si las cnatidades son diferentes a 0(diferente a 0, hubo pedido, sino nunca se produjo dicho pedido).
+	public void MostrarExtras()//Se evalua si las cnatidades son diferentes a 0(diferente a 0, hubo pedido, sino nunca se produjo dicho pedido).
 	{
-		int comprob=0;//Variable que comprueba si se hizo algun pedido.
+		
 		if(pan.getpaquete()!=0)
 		{
 			System.out.println("Panes: " + pan.getpaquete()+"Costo: "+pan.calcularPrecio());
-			comprob=1;
+			
 		}
 		
 		if(netflix.getTiempo()!=0)
 		{
 			System.out.println("Netflix: " + netflix.getTiempo() + "Costo: " + netflix.calcularPrecio());
-			comprob=1;
+			
 		}
 		if(snack.getCantidad()!=0)
 		{
 			System.out.println("Snacks: " + snack.getCantidad() + "Costo:" + snack.calcularPrecio());
-			comprob=1;
+			
 		}
 		if(bebida.getCantidad()!=0)
 		{
 			System.out.println("Bebidas: " + bebida.getCantidad() + "Costo: " + bebida.calcularPrecio());
-			comprob=1;
-		}
-		if(comprob==0)
-		{
-			System.out.println("No se ha realizado ningun pedido");
+			
 		}
 		
-		return comprob;
+		
+		
 		
 	}
 	

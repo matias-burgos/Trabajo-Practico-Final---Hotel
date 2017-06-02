@@ -9,6 +9,7 @@ public class Ocupacion {
 	Extras cargosExtras;//Cargos extras pedidos por los habitantes de la habitacion.
 	Pasajero responsable;//Persona que alquila la habitacion.
 	ArrayList<Pasajero>listaHabitantes=new ArrayList<>();//Lista de personas en la habitacion.
+	int comprob;//Atributo que comprueba si se ha realizado algun pedido, y los suma.
 	
 	
 	public Ocupacion()//Inicializacion.
@@ -17,6 +18,7 @@ public class Ocupacion {
 		periodoOcupacion=0;
 		cargosExtras=new Extras();
 		responsable=new Pasajero();
+		comprob=0;
 	}
 	
 	public void asignarHabitacion(Pasajero responsable, ArrayList<Pasajero> pasajeros, int periodo)//Asigna y ocupa una habitacion.
@@ -27,9 +29,7 @@ public class Ocupacion {
 		ocupada=true;
 	}
 	//Metodo para extras.
-	
-	
-	
+
 	public void InfoExtras()
 	{
 		cargosExtras.MostrarExtras();//Muestra todos los cargos extras junto a la cantidad y precio total de cada uno.
@@ -37,8 +37,29 @@ public class Ocupacion {
 		System.out.println("El cargo total a pagar por los servicios extras es de: $"+resultado);//Muestra el resultado final a pagar.
 	}
 	
+	//Pedidos.
+	public void PedidosBebidas(int cant)
+	{
+		cargosExtras.IngresarCantBebidas(cant);
+		comprob=comprob+1;
+	}
+	public void PedidosSnacks(int cant)
+	{
+		cargosExtras.IngresarCantSnacks(cant);
+		comprob=comprob+1;
+	}
+	public void PedidoPan(int cant)
+	{
+		cargosExtras.IngresarCantPan(cant);
+		comprob=comprob+1;
+	}
+	public void PedidoNetflix(int tiempo)
+	{
+		cargosExtras.IngresarTempoNetflix(tiempo);
+		comprob=comprob+1;
+	}
 	
-	
+	// Gets-Sets.
 	public void getHabitantes()
 	{
 		int i=1;//Utilizado para contar cantidad de personas y para muestreo.
@@ -65,8 +86,7 @@ public class Ocupacion {
 	
 	public void MuestreoOcupantes()
 	{
-		//Crear y asignar cuando se hagan pedidos
-		int comprob=0;//Comprueba si es que se realizo algun pedido.
+	
 		System.out.println("La habitacion se encuentra ocupada ");
 		System.out.println("Responsable de la habitacion:");
 		getResponsable();
@@ -74,10 +94,13 @@ public class Ocupacion {
 		getHabitantes();
 		System.out.println("Periodo de ocupacion: "+getPeriodo());
 		System.out.println("Cargos extras: ");
-		comprob=cargosExtras.MostrarExtras();
-		if(comprob==1)
+		if(comprob>0)
 		{
+			cargosExtras.MostrarExtras();
 			System.out.println("Cuenta total a pagar por cargos extras: $"+cargosExtras.TotalExtras());
+		}
+		else{
+			System.out.println("No se ha realizado ningun pedido");
 		}
 		
 	}
