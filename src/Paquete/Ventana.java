@@ -16,7 +16,7 @@ public class Ventana extends JFrame//Creacion clase ventana que llama al JFrame.
 	public Ventana()
 	{
 		super("Ventana");//Asigna nombre a la ventana llamando al constructor de JFrame.
-		setSize(800, 600);//Asigna tamaño.
+		setSize(800, 600);//Asigna tamaÃ±o.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Asigna accion de cierre, osea cuando se cierre la ventana.
 		
 		
@@ -24,10 +24,10 @@ public class Ventana extends JFrame//Creacion clase ventana que llama al JFrame.
 		cp.setLayout(new FlowLayout());//Hace algo con el contenedor.
 		
 		JLabel etiqueta = new JLabel("Nombre de Usuario: ");//Crea etiqueta y le asigna nombre.
-		JLabel etiqueta2 = new JLabel("Contraseña: ");
+		JLabel etiqueta2 = new JLabel("ContraseÃ±a: ");
 		JButton bAceptar=new JButton("Aceptar");
 		JButton bCrearCuenta = new JButton("Saludar");//Crea boton y le asigna un texto.
-		JTextField texto = new JTextField(50);//Crea texto y le asigna tamaño.
+		JTextField texto = new JTextField(50);//Crea texto y le asigna tamaÃ±o.
 		
 		cp.add(etiqueta);//Agrega etiqueta al contenedor.
 		cp.add(etiqueta2);
