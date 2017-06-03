@@ -8,12 +8,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Scanner;
 
 
 
 public class Pasajero extends Persona implements Serializable 
 {
-	
+	Scanner sc=new Scanner(System.in);
 	String ciudadOrigen;//Ciudad de origen.
 	String domicilioOrigen;//Domicilio en el que vive.
 	Habitacion actual;//Informacion sobre la habitacion en la que se encuentra.
@@ -57,12 +58,12 @@ public class Pasajero extends Persona implements Serializable
 		
 	}
 	
-	public void MostrarHistorial()
+	public void MostrarHistorial()//Muestra historial
 	{
 		FileInputStream inHistorial;
 		try
 		{
-			inHistorial=new FileInputStream("Historial.sd");
+			inHistorial=new FileInputStream("Historial.dat");
 			ObjectInputStream lectura=new ObjectInputStream(inHistorial);
 			Habitacion aux=(Habitacion)lectura.readObject();
 		}
@@ -81,11 +82,21 @@ public class Pasajero extends Persona implements Serializable
 	}
 	
 	
-	public void AsignarHabitacion(Habitacion nueva)
+	public void AsignarHabitacion(Habitacion nueva)//Agarra la nueva habitacion en la que se encuentra y la guarda en el archivo de historial.
 	{
 		actual=nueva;
 		AgregarHistorial(actual);
 	}
+	public void reservarHabitacion()
+	{
+		System.out.println("Ingresar el piso de la habitacion: ");
+		int piso=sc.nextInt();
+		System.out.println("Ingresar la cantidad de personas que habitaran la habitacion:  ");
+		int cant=sc.nextInt();
+		System.out.println("Ingresar ")
+		
+	}
+	
 	
 	public String getCiudad()
 	{

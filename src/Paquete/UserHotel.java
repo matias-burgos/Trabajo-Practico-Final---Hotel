@@ -29,15 +29,6 @@ public class UserHotel extends Persona{
 		this.user=user;
 	}
 	
-	public int getDNI()
-	{
-		return dni;
-	}
-	public void get(int dni)
-	{
-		this.dni=dni;
-	}
-	
 	
 	private void setContrasenha(String contra)
 	{

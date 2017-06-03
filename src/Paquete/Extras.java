@@ -1,7 +1,7 @@
 package Paquete;
 
 
-public class Extras //extends Ocupacion
+public class Extras 
 {
 	double totalGastos;
 	Pan pan;
@@ -43,22 +43,31 @@ public class Extras //extends Ocupacion
 	//Muestra los extras y las cantidades con sus respectivos precios.
 	public void MostrarExtras()//Se evalua si las cnatidades son diferentes a 0(diferente a 0, hubo pedido, sino nunca se produjo dicho pedido).
 	{
+		
 		if(pan.getpaquete()!=0)
 		{
 			System.out.println("Panes: " + pan.getpaquete()+"Costo: "+pan.calcularPrecio());
+			
 		}
+		
 		if(netflix.getTiempo()!=0)
 		{
 			System.out.println("Netflix: " + netflix.getTiempo() + "Costo: " + netflix.calcularPrecio());
+			
 		}
 		if(snack.getCantidad()!=0)
 		{
 			System.out.println("Snacks: " + snack.getCantidad() + "Costo:" + snack.calcularPrecio());
+			
 		}
 		if(bebida.getCantidad()!=0)
 		{
 			System.out.println("Bebidas: " + bebida.getCantidad() + "Costo: " + bebida.calcularPrecio());
+			
 		}
+		
+		
+		
 		
 	}
 	
