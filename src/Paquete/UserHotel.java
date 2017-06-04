@@ -30,22 +30,19 @@ public class UserHotel extends Persona{
 	}
 	
 	
-	private void setContrasenha(String contra)
+	public void setContrasenha(String contra)
 	{
 		contrasenha=contra;
 	}
-	private String getContrasenha()
+	public String getContrasenha()
 	{
 		return contrasenha;
 	}
 	
 	public void MostrarUsuario()
 	{
-		
-		System.out.println("Nombre de la persona: "+getNombre());
-		System.out.println("Nombre de usuario: "+getUser());
-		System.out.println("DNI: "+getDNI());
-		
+		MostrarPersona();
+		System.out.println("Nombre de usuario: "+getUser());	
 	}
 	
 	//Cambiar contraseña del usuario.

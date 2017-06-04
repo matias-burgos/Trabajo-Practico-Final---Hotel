@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 
 
-public class Pasajero extends Persona implements Serializable 
+public class Pasajero extends UserHotel implements Serializable 
 {
 	Scanner sc=new Scanner(System.in);
 	String ciudadOrigen;//Ciudad de origen.
@@ -26,9 +26,9 @@ public class Pasajero extends Persona implements Serializable
 		ciudadOrigen="";
 		domicilioOrigen="";
 	}
-	public Pasajero(String nombre, int dni, String ciudad, String domicilio)
+	public Pasajero(String nombre, int dni, String ciudad, String domicilio, String usuario, String contraseña)
 	{
-		super(nombre, dni);
+		super(nombre, dni, usuario, contraseña);
 		ciudadOrigen=ciudad;
 		domicilioOrigen=domicilio;
 	}
@@ -87,13 +87,13 @@ public class Pasajero extends Persona implements Serializable
 		actual=nueva;
 		AgregarHistorial(actual);
 	}
-	public void reservarHabitacion()
+	public void reservarHabitacion()//Terminar
 	{
 		System.out.println("Ingresar el piso de la habitacion: ");
 		int piso=sc.nextInt();
 		System.out.println("Ingresar la cantidad de personas que habitaran la habitacion:  ");
 		int cant=sc.nextInt();
-		System.out.println("Ingresar ")
+		System.out.println("Ingresar ");
 		
 	}
 	
@@ -106,10 +106,10 @@ public class Pasajero extends Persona implements Serializable
 	{
 		return domicilioOrigen;
 	}
-	public void MostrarDatos()//Muestra todos los gets juntos.
+	public void MostrarPasajero()//Muestra todos los gets juntos.
 	{
-		System.out.println("Nombre: "+ getNombre());
-		System.out.println("DNI: "+getDNI());
+		System.out.println("Tipo de usuario: Pasajero");
+		MostrarUsuario();
 		System.out.println("Ciudad de origen: "+getCiudad());
 		System.out.println("Domicilio de procedenci: "+getDomicilio());
 		

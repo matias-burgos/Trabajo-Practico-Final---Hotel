@@ -66,7 +66,7 @@ public class Ocupacion {
 		for(Pasajero aux:listaHabitantes)
 		{
 			System.out.println("------------------------------------------ Habitante "+i+"------------------------------------------");
-			aux.MostrarDatos();
+			aux.MostrarPasajero();
 			i++;
 		}
 	}
@@ -76,7 +76,7 @@ public class Ocupacion {
 	}
 	public void getResponsable()//Muestra la informacion del pasajeros que alquila la habitacion.
 	{
-		responsable.MostrarDatos();
+		responsable.MostrarPasajero();
 	}
 	public boolean getOcupada()
 	{
