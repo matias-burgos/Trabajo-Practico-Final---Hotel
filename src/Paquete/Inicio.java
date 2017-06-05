@@ -20,6 +20,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.awt.event.ActionEvent;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class Inicio {
 
@@ -63,28 +66,29 @@ public class Inicio {
 		frmHotelSawuel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHotelSawuel.getContentPane().setLayout(null);
 		
-		contraseña = new JPasswordField();
-		contraseña.setEchoChar('*');
-		contraseña.setBounds(487, 330, 230, 34);
-		frmHotelSawuel.getContentPane().add(contraseña);
+		JLabel NombreUsuario = new JLabel("Nombre de Usuario");
+		NombreUsuario.setBounds(243, 275, 229, 31);
+		NombreUsuario.setFont(new Font("MV Boli", Font.BOLD, 18));
+		NombreUsuario.setBackground(new Color(0, 102, 255));
+		frmHotelSawuel.getContentPane().add(NombreUsuario);
 		
 		usuario = new JTextField();
-		usuario.setBounds(487, 277, 230, 34);
+		usuario.setBounds(477, 275, 230, 31);
 		frmHotelSawuel.getContentPane().add(usuario);
 		usuario.setColumns(10);
 		
-		JLabel NombreUsuario = new JLabel("Nombre de Usuario");
-		NombreUsuario.setFont(new Font("MV Boli", Font.BOLD, 18));
-		NombreUsuario.setBackground(new Color(0, 102, 255));
-		NombreUsuario.setBounds(243, 275, 234, 36);
-		frmHotelSawuel.getContentPane().add(NombreUsuario);
-		
 		JLabel Contraseña = new JLabel("Contrase\u00F1a");
+		Contraseña.setBounds(243, 311, 229, 30);
 		Contraseña.setFont(new Font("MV Boli", Font.BOLD, 18));
-		Contraseña.setBounds(243, 330, 234, 34);
 		frmHotelSawuel.getContentPane().add(Contraseña);
 		
+		contraseña = new JPasswordField();
+		contraseña.setBounds(477, 311, 230, 30);
+		contraseña.setEchoChar('*');
+		frmHotelSawuel.getContentPane().add(contraseña);
+		
 		JButton botonAceptar = new JButton("Aceptar");
+		botonAceptar.setBounds(477, 346, 83, 34);
 		botonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nombre=NombreUsuario.getText();//Obtiene lo escrito por el usuario en el "nombre de usuario", y lo almacena en un string.
@@ -95,10 +99,11 @@ public class Inicio {
 				int comprob=0;//Comprueba si el nombre de usuario y la contraseña es encontrada.
 				try
 				{
+					
 					salidaPasajero=new FileInputStream("Pasajero.dat");
 					ObjectInputStream lectura=new ObjectInputStream(salidaPasajero); 
 					Pasajero aux=(Pasajero)lectura.readObject();
-					while(lectura==null)//Recorrido del archivo
+					while(lectura!=null)//Recorrido del archivo
 					{
 						//Comprobacion.
 						if(/*nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha())*/ nombre.equals("kappa") && contraseña.equals("kappa"))
@@ -116,13 +121,14 @@ public class Inicio {
 							MenuPasajero nuevo=new MenuPasajero();
 							nuevo.setVisible(true);
 							comprob=1;*/
-							//JOptionPane.showMessageDialog(frame,  "Taiel sos un puto descendido");
+							//JOptionPane.showMessageDialog(frmHotelSawuel,  "Taiel sos un puto descendido");
 						}
 						else
 						{
 							//JOptionPane.showMessageDialog(frame, "no enstraste");
 						}
 					}
+					
 					
 				} catch (FileNotFoundException e) {
 					System.out.println("Problema al usar el archivo de pasajeros: ");
@@ -143,7 +149,6 @@ public class Inicio {
 		});
 		botonAceptar.setFont(new Font("Palatino Linotype", Font.PLAIN, 14));
 		botonAceptar.setBackground(new Color(0, 153, 255));
-		botonAceptar.setBounds(487, 390, 116, 34);
 		frmHotelSawuel.getContentPane().add(botonAceptar);
 	}
 }
