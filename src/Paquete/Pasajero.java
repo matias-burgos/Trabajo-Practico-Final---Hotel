@@ -42,7 +42,7 @@ public class Pasajero extends UserHotel implements Serializable
 		
 		try
 		{
-			outHistorial= new FileOutputStream("Historial.sd");
+			outHistorial=new FileOutputStream("Historial.sd");
 			ObjectOutputStream escritura=new ObjectOutputStream(outHistorial);
 			escritura.writeObject(actual);//Asignacion de habitacion en el archivo.
 			System.out.println("La habitacion "+actual.getNumero()+" fue cargada en el historial del pasajero");

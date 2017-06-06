@@ -99,11 +99,11 @@ public class Login {
 				int comprob=0;//Comprueba si el nombre de usuario y la contraseña es encontrada.
 				try
 				{
-					
 					salidaPasajero=new FileInputStream("Pasajero.dat");
 					ObjectInputStream lectura=new ObjectInputStream(salidaPasajero); 
 					Pasajero aux=(Pasajero)lectura.readObject();
-					while(lectura!=null)//Recorrido del archivo
+					System.out.println("asdas");
+					while(aux!=null)//Recorrido del archivo
 					{
 						//Comprobacion.
 						if(nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha()))
@@ -120,6 +120,7 @@ public class Login {
 							comprob=1;
 							JOptionPane.showMessageDialog(frmHotelSawuel, "no enstraste");
 						}
+						aux=(Pasajero)lectura.readObject();
 					}
 					
 					

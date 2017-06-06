@@ -1,6 +1,6 @@
 package Paquete;
 
-import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -9,21 +9,30 @@ import java.io.ObjectOutputStream;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		
-		Pasajero nuevo=new Pasajero("Pepe", 1230,  "Mar",  "Carasa 4444",  "Pepe98",  "1542");
-		FileOutputStream ejemplo;
+		Persona auxi=new Pasajero("pepe", 1230, "mardel", "asdas120", "Pepe10", "1230");
+		FileOutputStream nuevo;
 		try {
-			ejemplo=new FileOutputStream("Pasajero.dat");
-			ObjectOutputStream nuevos=new ObjectOutputStream(ejemplo);
-			nuevos.writeObject(nuevo);
-			File nuevoss=new File("PAsajero.dat");
-			nuevoss.
+			nuevo=new FileOutputStream("Pasajero.dat");
+			ObjectOutputStream escritura=new ObjectOutputStream(nuevo);
+			escritura.writeObject(auxi);
+			System.out.println("asdasd");
+			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Se rompio"+e);
 		}
-		
-		
+		finally
+		{
+			try {
+				escritura.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+			
+				
+			
+		}
 	}
+		
 
 }
