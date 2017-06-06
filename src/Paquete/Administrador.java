@@ -34,7 +34,7 @@ public class Administrador extends UserHotel{
 	
 	
 	// Aumenta el nivel de permisos del conserje. Si ya tiene el maximo tira un mensaje
-	public void aumentarPermisos(Conserje conserje)
+	/*public void aumentarPermisos(Conserje conserje)
 	{
 		if(conserje.getPermisos()==3)
 		{
@@ -61,26 +61,84 @@ public class Administrador extends UserHotel{
 			conserje.setPermisos(aux-1);
 			System.out.println("Permisos quitados");
 		}
-	}
+	}*/
 	
 	//Recorre el archivo de empleados (conserje) y retorna la cantidad.
 	public int cantidadEmpleados() 
 	{
+		int cant=0;
 		
+		return cant;
 	}
 	
 	
 	//Muestra un empleado del archivo.
 	public void verUnEmpleado()
 	{
+		FileInputStream empleados;
+		try
+		{
+			empleados = new FileInputStream("Empleados.dat");
+			ObjectInputStream lectura = new ObjectInputStream(empleados);
+			Conserje aux=(Conserje)lectura.readObject();
+			System.out.println("Nombre: " + aux.getNombre());
+			System.out.println("DNI: " + aux.getDNI());
+			
+		}
 		
+		catch(NullPointerException ex)
+		{
+			System.out.println("El archivo esta vacio: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+		catch(ClassNotFoundException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
 	}
+	
+	
+	
 	
 	
 	//Recorre el archivo y muestra a todos los empleados.
 	public void verEmpleados()
 	{
+		FileInputStream empleados;
+		try
+		{
+			empleados = new FileInputStream("Empleados.dat");
+			ObjectInputStream lectura = new ObjectInputStream(empleados);
+			Conserje aux=(Conserje)lectura.readObject();
+			//System.out.println("Nombre: " + Conserje.getNombre());
+			//System.out.println("DNI: " + Conserje.getDNI());	
+			
+			while(aux != null)
+			{
+				aux=(Conserje)lectura.readObject();
+				System.out.println("Nombre: " + aux.getNombre());
+				System.out.println("DNI: " + aux.getDNI());	
+			}
+			
+			
+		}
 		
+		
+		catch(NullPointerException ex)
+		{
+			System.out.println("El archivo esta vacio: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+		catch(ClassNotFoundException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
 	}
 	
 	
@@ -88,6 +146,34 @@ public class Administrador extends UserHotel{
 	public Conserje crearConserje()
 	{
 		
+		
+		Scanner sc = new Scanner(System.in);
+		String n;//nombre
+		int d;//dni
+		String u;//usuario
+		String c;//contraseña
+		String id;//ID de empleado
+		
+		System.out.println("Nombre: ");
+		n = sc.nextLine();
+		
+		System.out.println("DNI: ");
+		d = sc.nextInt();
+		
+		System.out.println("Usuario: ");
+		u = sc.nextLine();
+		
+		System.out.println("Contraseña: ");
+		c = sc.nextLine();
+		
+		System.out.println("ID de empleado: ");
+		id= sc.nextLine();
+		
+		Conserje conserje = new Conserje(n, d, u, c, id);
+		
+		sc.close();
+		
+		return conserje;
 	}
 	
 	

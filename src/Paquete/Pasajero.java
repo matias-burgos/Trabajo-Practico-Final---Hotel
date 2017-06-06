@@ -65,11 +65,6 @@ public class Pasajero extends Persona implements Serializable
 			inHistorial=new FileInputStream("Historial.sd");
 			ObjectInputStream lectura=new ObjectInputStream(inHistorial);
 			Habitacion aux=(Habitacion)lectura.readObject();
-			while(aux!=null)
-			{
-				aux.MostrarHabitacion();
-				aux=(Habitacion)lectura.readObject();
-			}
 		}
 		catch(NullPointerException ex)
 		{

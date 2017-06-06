@@ -15,7 +15,6 @@ public class Persona {
 		 this.dni=dni;
 	 }
 	 
-	 //Gets/Sets.
 	 public String getNombre()
 	 {
 		 return nombre;
@@ -32,11 +31,5 @@ public class Persona {
 	 public void setDNI(int dni)
 	 {
 		 this.dni=dni;
-	 }
-	 
-	 public void MostrarPersona()
-	 {
-		 System.out.println("Nombre de la persona: "+getNombre());
-		 System.out.println("DNI: "+getDNI());
 	 }
 }
