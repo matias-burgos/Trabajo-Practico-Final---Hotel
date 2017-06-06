@@ -8,6 +8,8 @@
 
 package Paquete;
 
+import java.util.Scanner;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -60,6 +62,55 @@ public class Administrador extends UserHotel{
 			System.out.println("Permisos quitados");
 		}
 	}
+	
+	//Recorre el archivo de empleados (conserje) y retorna la cantidad.
+	public int cantidadEmpleados() 
+	{
+		
+	}
+	
+	
+	//Muestra un empleado del archivo.
+	public void verUnEmpleado()
+	{
+		
+	}
+	
+	
+	//Recorre el archivo y muestra a todos los empleados.
+	public void verEmpleados()
+	{
+		
+	}
+	
+	
+	//Pide al usuario los datos necesarios para crear un objeto de tipo conserje
+	public Conserje crearConserje()
+	{
+		
+	}
+	
+	
+	//Agrega un empleado al archivo de empleados.
+	public void agregarEmpleado()
+	{
+		
+	}
+	
+	
+	//Recorre un archivo de empleados y elimina un empleado buscandolo por su nombre y apellido
+	public void eliminarEmpleado()
+	{
+		
+	}
+	
+	
+	//Recorre un archivo de habitaciones y la elmina segun el numero de habitacion
+	public void eliminarHabitacion()
+	{
+		
+	}
+	
 	
 	
 	//Ejemplo.
