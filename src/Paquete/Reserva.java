@@ -39,11 +39,11 @@ public class Reserva {
 	
 	
 	
-	public String BuscarHabitacion(int piso, int periodo, int cantHabitantes)//Busca habitaciones en base a los datos pedidos por los pasajeros.
+	public int BuscarHabitacion(int piso, int periodo, int cantHabitantes, String s, int comprob)//Busca habitaciones en base a los datos pedidos por los pasajeros.
 	{
-		String s=null;//Variablelacualseutilizara para comprobar siel pasajero quiererealizar nuevamente la busqueda con otros datos.
+		s=null;//Variablelacualseutilizara para comprobar siel pasajero quiererealizar nuevamente la busqueda con otros datos.
 		FileInputStream habitaciones;
-		int comprob=0;//Comprueba la existencia de la habitacion solicitada
+		comprob=0;//Comprueba la existencia de la habitacion solicitada
 		try{
 			habitaciones=new FileInputStream("Habitaciones.dat");
 			ObjectInputStream lectura=new ObjectInputStream(habitaciones);
@@ -73,14 +73,13 @@ public class Reserva {
 			System.out.println("Se produjo un erro en el manejo de la escritura: ");
 			e.printStackTrace();
 		} 
-		
-		if(comprob==0)
+		finally
 		{
-			System.out.println("No se encuentran habitacionescon esos datos");
-			System.out.println("¿Desea buscarcon otros datos? s/n: ");
-			s=sc.nextLine();
-		}
-		else{
+			if(comprob==0)
+			{
+				System.out.println("No se encuentran habitacionescon esos datos");
+			}
+			
 			System.out.println("¿Desea buscarcon otros datos? s/n: ");
 			s=sc.nextLine();
 			if(s.equals("n"))
@@ -88,9 +87,14 @@ public class Reserva {
 				System.out.println("Elija alguna habitacion: ");
 				numeroHabitacion=sc.nextInt();
 			}
+			else{
+				numeroHabitacion=BuscarHabitacion(piso, periodo, cantHabitantes, s, comprob);
+			}
+			
 			
 		}
-		return s;
+		
+		return numeroHabitacion;
 	}
 	
 	

@@ -12,31 +12,20 @@ import java.awt.Component;
 import javax.swing.JButton;
 
 public class Logueo extends JPanel {
-	private JTextField textField;
-	private JPasswordField passwordField;
 
 	/**
 	 * Create the panel.
 	 */
 	public Logueo() {
-		setLayout(new BorderLayout(0, 0));
+		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		add(lblNewLabel);
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(250, 98, 89, 23);
+		add(btnNewButton);
 		
-		textField = new JTextField();
-		add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		add(lblNewLabel_1);
-		
-		passwordField = new JPasswordField();
-		add(passwordField);
-		
-		JButton btnAceptar = new JButton("Aceptar");
-		add(btnAceptar);
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.setBounds(250, 170, 89, 23);
+		add(btnNewButton_1);
 
 	}
-
 }

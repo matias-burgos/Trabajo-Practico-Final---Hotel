@@ -24,7 +24,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-public class Inicio {
+public class Login {
 
 	private JFrame frmHotelSawuel;
 	private JPasswordField contraseña;
@@ -37,7 +37,7 @@ public class Inicio {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Inicio window = new Inicio();
+					Login window = new Login();
 					window.frmHotelSawuel.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class Inicio {
 	/**
 	 * Create the application.
 	 */
-	public Inicio() {
+	public Login() {
 		initialize();
 	}
 
@@ -106,26 +106,19 @@ public class Inicio {
 					while(lectura!=null)//Recorrido del archivo
 					{
 						//Comprobacion.
-						if(/*nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha())*/ nombre.equals("kappa") && contraseña.equals("kappa"))
-						{/*
-							EventQueue.invokeLater(new Runnable() {
-								public void run() {
-									try {
-										MenuPasajero frame = new MenuPasajero();
-										frame.setVisible(true);
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
-								}
-							});
+						if(nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha()))
+						{
 							MenuPasajero nuevo=new MenuPasajero();
 							nuevo.setVisible(true);
-							comprob=1;*/
-							//JOptionPane.showMessageDialog(frmHotelSawuel,  "Taiel sos un puto descendido");
+							comprob=1;
+							JOptionPane.showMessageDialog(frmHotelSawuel,  "entraste");
 						}
 						else
 						{
-							//JOptionPane.showMessageDialog(frame, "no enstraste");
+							MenuPasajero nuevo=new MenuPasajero();
+							nuevo.setVisible(true);
+							comprob=1;
+							JOptionPane.showMessageDialog(frmHotelSawuel, "no enstraste");
 						}
 					}
 					
