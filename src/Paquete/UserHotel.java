@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class UserHotel extends Persona{
 	String user;//Nombre de usuario.
-	protected String contrasenha;//Contraseña del usuario.
+	transient String contrasenha;//Contraseña del usuario.
 	Scanner sc=new Scanner(System.in);
 	public UserHotel()
 	{
@@ -19,6 +19,15 @@ public class UserHotel extends Persona{
 		this.user=user;
 		this.contrasenha=contrasenha;
 	}
+	//Opcional
+	public String toString(){
+	    String texto=(contrasenha==null) ? "(no disponible)" : contrasenha;
+	    texto+=nombre;
+	    return texto;
+	  }
+	
+	
+	//Gets/Sets.
 	
 	public String getUser()
 	{

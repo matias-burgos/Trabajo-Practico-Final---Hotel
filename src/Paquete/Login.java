@@ -100,14 +100,15 @@ public class Login implements Serializable{
 				String contraseña=Contraseña.getText();//Obtiene lo escrito por el usuario en la "contraseña", y lo guarda en un string./
 				//Busca en el archivo de pasajeros el nombre de usuario y la contraseña ingresadas.
 				
-				FileInputStream salidaPasajero;
+				FileInputStream salidaPasajero=null;
 				int comprob=0;//Comprueba si el nombre de usuario y la contraseña es encontrada.
+				Pasajero aux=null;
 				try
 				{
 					salidaPasajero=new FileInputStream("Pasajero.dat");
 					ObjectInputStream lectura=new ObjectInputStream(salidaPasajero); 
 					System.out.println("asdas");
-					Pasajero aux=(Pasajero)lectura.readObject();
+					aux=(Pasajero)lectura.readObject();
 					System.out.println("asdas");
 					while(aux!=null)//Recorrido del archivo
 					{
