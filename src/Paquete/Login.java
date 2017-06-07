@@ -19,13 +19,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.awt.event.ActionEvent;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-public class Login {
+public class Login implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame frmHotelSawuel;
 	private JPasswordField contraseña;
 	private JTextField usuario;
@@ -101,6 +106,7 @@ public class Login {
 				{
 					salidaPasajero=new FileInputStream("Pasajero.dat");
 					ObjectInputStream lectura=new ObjectInputStream(salidaPasajero); 
+					System.out.println("asdas");
 					Pasajero aux=(Pasajero)lectura.readObject();
 					System.out.println("asdas");
 					while(aux!=null)//Recorrido del archivo
@@ -122,7 +128,7 @@ public class Login {
 						}
 						aux=(Pasajero)lectura.readObject();
 					}
-					
+					lectura.close();
 					
 				} catch (FileNotFoundException e) {
 					System.out.println("Problema al usar el archivo de pasajeros: ");

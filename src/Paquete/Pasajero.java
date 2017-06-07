@@ -46,6 +46,7 @@ public class Pasajero extends UserHotel implements Serializable
 			ObjectOutputStream escritura=new ObjectOutputStream(outHistorial);
 			escritura.writeObject(actual);//Asignacion de habitacion en el archivo.
 			System.out.println("La habitacion "+actual.getNumero()+" fue cargada en el historial del pasajero");
+			escritura.close();
 		}
 		catch(FileNotFoundException ex)
 		{
@@ -66,6 +67,7 @@ public class Pasajero extends UserHotel implements Serializable
 			inHistorial=new FileInputStream("Historial.dat");
 			ObjectInputStream lectura=new ObjectInputStream(inHistorial);
 			Habitacion aux=(Habitacion)lectura.readObject();
+			lectura.close();
 		}
 		catch(NullPointerException ex)
 		{
