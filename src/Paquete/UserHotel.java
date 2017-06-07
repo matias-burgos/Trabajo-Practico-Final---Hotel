@@ -1,8 +1,9 @@
 package Paquete;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class UserHotel extends Persona{
+public class UserHotel extends Persona implements Serializable {
 	String user;//Nombre de usuario.
 	transient String contrasenha;//Contraseña del usuario.
 	Scanner sc=new Scanner(System.in);

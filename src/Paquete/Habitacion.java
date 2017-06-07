@@ -1,9 +1,10 @@
 package Paquete;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Habitacion {
+public class Habitacion implements Serializable {
 		
 		//Datos de habitacion:
 		int numero;//Numero de habitacion.

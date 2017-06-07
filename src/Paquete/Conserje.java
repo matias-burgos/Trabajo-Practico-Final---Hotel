@@ -1,5 +1,7 @@
 package Paquete;
 
-public class Conserje extends UserHotel{
+import java.io.Serializable;
+
+public class Conserje extends UserHotel implements Serializable{
 		
 }

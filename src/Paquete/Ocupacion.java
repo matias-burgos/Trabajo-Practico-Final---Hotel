@@ -1,8 +1,9 @@
 package Paquete;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ocupacion {
+public class Ocupacion implements Serializable {
 
 	boolean ocupada;//Si la habitacion se encuentra ocupada (true) o disponible (false)
 	int periodoOcupacion;//Es el periodo por el que la habitacion esta ocupada.
