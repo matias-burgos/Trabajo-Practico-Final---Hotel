@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JList;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.AbstractListModel;
 import javax.swing.JScrollBar;
 import javax.swing.JTree;
@@ -23,6 +24,7 @@ public class MenuAdministrador extends JPanel implements Serializable{
 
 	
 	public MenuAdministrador() {
+		
 		
 		JLabel lblVerInformacionDe = new JLabel("Ver informacion de:");
 		

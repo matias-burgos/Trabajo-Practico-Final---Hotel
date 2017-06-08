@@ -49,7 +49,7 @@ public class MenuPasajero extends JFrame implements Serializable{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		JButton btnNewButton = new JButton("Realizar reserva");
 		btnNewButton.setBounds(250, 31, 124, 23);
 		contentPane.add(btnNewButton);
@@ -74,6 +74,11 @@ public class MenuPasajero extends JFrame implements Serializable{
 		contentPane.add(textArea);
 		
 		JButton btnSalir = new JButton("salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnSalir.setBounds(345, 239, 89, 23);
 		contentPane.add(btnSalir);
 		

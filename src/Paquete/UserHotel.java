@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class UserHotel extends Persona implements Serializable {
 	
 	String user;//Nombre de usuario.
-	transient String contrasenha;//Contraseña del usuario.
+	String contrasenha;//Contraseña del usuario.
 
 	public UserHotel()
 	{
