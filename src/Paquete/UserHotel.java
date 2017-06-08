@@ -1,12 +1,12 @@
 package Paquete;
 
 import java.io.Serializable;
-import java.util.Scanner;
 
 public class UserHotel extends Persona implements Serializable {
+	
 	String user;//Nombre de usuario.
 	transient String contrasenha;//ContraseÃ±a del usuario.
-	Scanner sc=new Scanner(System.in);
+
 	public UserHotel()
 	{
 		super();
@@ -55,32 +55,11 @@ public class UserHotel extends Persona implements Serializable {
 		System.out.println("Nombre de usuario: "+getUser());	
 	}
 	
-	//Cambiar contraseña del usuario.
-	public void setNewContrasenha()//Ingresa una nueva contraseña y se llama a la funcion que hace la comprobacion y el cambio.
-	{
-		String comprobar="s";
-		String newContrasenha;
-		do
-		{
-			System.out.println("Ingrese la nueva contrasenha: ");
-			newContrasenha=sc.nextLine();
-			System.out.println("La contrasenha ingresada fue: "+newContrasenha);
-			System.out.println("¿Desea cambiarla? s/n: ");
-			comprobar=sc.nextLine();
-		}while(comprobar.equals("s"));
-		CambiarContrasenha(newContrasenha);
-	}
+	
+	
 	
 	public void CambiarContrasenha(String newContrasenha)//Realiza la comprobacion y el cambio de contraseña.
 	{
-		System.out.println("Ingrese la contraseha vieja: ");
-		String verific=sc.nextLine();//Contrasenha ingresada por el usuario que quiere cambiar la contrasenha, utilizada para verificar si conincide con la ya ingresada.
-		if(getContrasenha()==verific)
-		{
-			setContrasenha(newContrasenha);//Al pasar la verificacion se ingresa la nueva contrasenha.
-		}
-		else{
-			System.out.println("La contraseha es incorrecta");//Si no pasa la verificacion da mensaje del error.
-		}
+		setContrasenha(newContrasenha);//Al pasar la verificacion se ingresa la nueva contrasenha.
 	}
 }

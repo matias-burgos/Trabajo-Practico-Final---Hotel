@@ -1,6 +1,12 @@
 package Paquete;
 
-public class Persona {
+import java.io.Serializable;
+
+public class Persona implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7424629624387745945L;
 	String nombre;
 	int dni;
 	

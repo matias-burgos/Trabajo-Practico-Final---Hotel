@@ -13,7 +13,7 @@ public class Reserva {
 	Habitacion reservada=new Habitacion();//Habitacion que se reservara.
 	int periodo=0;//Periodo en el que se reservara.
 	
-	Scanner sc=new Scanner(System.in);
+	
 	int numeroHabitacion=0;//Numero delahabitacion que se desea reservar.
 	//Hacerfechas buscar: Date, Day, Before, After, etc.
 	
@@ -39,63 +39,39 @@ public class Reserva {
 	
 	
 	
-	public int BuscarHabitacion(int piso, int periodo, int cantHabitantes, String s, int comprob)//Busca habitaciones en base a los datos pedidos por los pasajeros.
-	{
-		s=null;//Variablelacualseutilizara para comprobar siel pasajero quiererealizar nuevamente la busqueda con otros datos.
-		FileInputStream habitaciones;
-		comprob=0;//Comprueba la existencia de la habitacion solicitada
-		try{
-			habitaciones=new FileInputStream("Habitaciones.dat");
-			ObjectInputStream lectura=new ObjectInputStream(habitaciones);
+	public int BuscarHabitacion(int cantPasajeros, int periodo/*cambiar cuando tengamos metodo fecha*/, Pasajero responsable, int piso)//Busca habitaciones en base a los datos pedidos por los pasajeros.
+	{	
+		int comprob=0;//Comprueba que se hayan encontrado habitaciones.
+		FileInputStream salida;
+		try {
+			salida=new FileInputStream("Habitacion.dat");
+			ObjectInputStream lectura=new ObjectInputStream(salida);
 			Habitacion aux=(Habitacion)lectura.readObject();
-			System.out.println("Habitaciones disponibles: ");
 			while(aux!=null)
 			{
-				if(aux.getPiso()==piso)
+				if(aux.getMaxHabi()==cantPasajeros && aux.getPiso()==piso && aux.ocup.getPeriodo()==periodo)
 				{
-					if(aux.getMaxHabi()==cantHabitantes)
-					{
-						if(aux.ocup.getPeriodo()==periodo)
-						{
-							aux.MostrarHabitacion();
-							comprob=comprob+1;
-						}
-					}
+					aux.MostrarHabitacion();
+					comprob=comprob++;
 				}
 				aux=(Habitacion)lectura.readObject();
 			}
+			
+			lectura.close();
+		} catch (Exception e) {
+			System.out.println("Error en la lectura del archivo: "+e);
 		}
-		
-		catch (ClassNotFoundException e) {
-			System.out.println("Se produjo un erro en el manejo de la escritura: ");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.println("Se produjo un erro en el manejo de la escritura: ");
-			e.printStackTrace();
-		} 
 		finally
 		{
 			if(comprob==0)
 			{
-				System.out.println("No se encuentran habitacionescon esos datos");
+				System.out.println("No se han encontrado habitaciones");
 			}
-			
-			System.out.println("¿Desea buscarcon otros datos? s/n: ");
-			s=sc.nextLine();
-			if(s.equals("n"))
-			{
-				System.out.println("Elija alguna habitacion: ");
-				numeroHabitacion=sc.nextInt();
-			}
-			else{
-				numeroHabitacion=BuscarHabitacion(piso, periodo, cantHabitantes, s, comprob);
-			}
-			
-			
 		}
-		
-		return numeroHabitacion;
+		return comprob;
 	}
+	
+	
 	
 	
 	public void ReservarHabitacion()

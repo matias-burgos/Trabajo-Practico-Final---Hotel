@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 
 
-public class Pasajero extends UserHotel implements Serializable 
+public class Pasajero extends UserHotel implements Serializable
 {
-	Scanner sc=new Scanner(System.in);
+	
 	String ciudadOrigen;//Ciudad de origen.
 	String domicilioOrigen;//Domicilio en el que vive.
 	Habitacion actual;//Informacion sobre la habitacion en la que se encuentra.
@@ -89,16 +89,19 @@ public class Pasajero extends UserHotel implements Serializable
 		actual=nueva;
 		AgregarHistorial(actual);
 	}
+	/*
 	public void reservarHabitacion()//Terminar
 	{
+		
 		System.out.println("Ingresar el piso de la habitacion: ");
 		int piso=sc.nextInt();
 		System.out.println("Ingresar la cantidad de personas que habitaran la habitacion:  ");
 		int cant=sc.nextInt();
 		System.out.println("Ingresar ");
 		
+		
 	}
-	
+	*/
 	
 	public String getCiudad()
 	{
@@ -114,6 +117,7 @@ public class Pasajero extends UserHotel implements Serializable
 		MostrarUsuario();
 		System.out.println("Ciudad de origen: "+getCiudad());
 		System.out.println("Domicilio de procedenci: "+getDomicilio());
+		System.out.println("contra: "+getContrasenha());
 		
 	}
 	

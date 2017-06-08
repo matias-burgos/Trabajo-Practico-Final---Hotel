@@ -1,29 +1,18 @@
 package Paquete;
 
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import java.awt.Component;
-import javax.swing.JButton;
-import java.awt.FlowLayout;
+import java.io.Serializable;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import javax.swing.SpringLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JSpinner;
-import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-public class CrearCuenta extends JPanel {
+public class CrearCuenta extends JPanel implements Serializable{
 	private JLabel lblCrearCuenta;
 	private JTextField txtApellido_1;
 	private JTextField txtApellido;
