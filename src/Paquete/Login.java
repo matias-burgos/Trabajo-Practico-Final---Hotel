@@ -116,8 +116,10 @@ public class Login implements Serializable
 					String contraseñaEjemplo="2";
 						if(/*nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha())*/ nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo))
 						{
+							/*
 							JOptionPane.showMessageDialog(frmHotelSawuel,  "entraste");
-							MenuPasajero nuevo=new MenuPasajero();
+							MenuPasajero nuevo=new MenuPasajero();*/
+							MenuAdministrador nuevo=new MenuAdministrador();
 							nuevo.setVisible(true);
 							comprob=1;
 							
