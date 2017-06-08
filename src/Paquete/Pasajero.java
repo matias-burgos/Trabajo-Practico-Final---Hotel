@@ -8,12 +8,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Scanner;
 
 
 
-public class Pasajero extends Persona implements Serializable 
+public class Pasajero extends UserHotel implements Serializable 
 {
-	
+	Scanner sc=new Scanner(System.in);
 	String ciudadOrigen;//Ciudad de origen.
 	String domicilioOrigen;//Domicilio en el que vive.
 	Habitacion actual;//Informacion sobre la habitacion en la que se encuentra.
@@ -25,9 +26,9 @@ public class Pasajero extends Persona implements Serializable
 		ciudadOrigen="";
 		domicilioOrigen="";
 	}
-	public Pasajero(String nombre, int dni, String ciudad, String domicilio)
+	public Pasajero(String nombre, int dni, String ciudad, String domicilio, String usuario, String contraseña)
 	{
-		super(nombre, dni);
+		super(nombre, dni, usuario, contraseña);
 		ciudadOrigen=ciudad;
 		domicilioOrigen=domicilio;
 	}
@@ -41,10 +42,11 @@ public class Pasajero extends Persona implements Serializable
 		
 		try
 		{
-			outHistorial= new FileOutputStream("Historial.sd");
+			outHistorial=new FileOutputStream("Historial.sd");
 			ObjectOutputStream escritura=new ObjectOutputStream(outHistorial);
 			escritura.writeObject(actual);//Asignacion de habitacion en el archivo.
 			System.out.println("La habitacion "+actual.getNumero()+" fue cargada en el historial del pasajero");
+			escritura.close();
 		}
 		catch(FileNotFoundException ex)
 		{
@@ -62,9 +64,10 @@ public class Pasajero extends Persona implements Serializable
 		FileInputStream inHistorial;
 		try
 		{
-			inHistorial=new FileInputStream("Historial.sd");
+			inHistorial=new FileInputStream("Historial.dat");
 			ObjectInputStream lectura=new ObjectInputStream(inHistorial);
 			Habitacion aux=(Habitacion)lectura.readObject();
+			lectura.close();
 		}
 		catch(NullPointerException ex)
 		{
@@ -86,7 +89,15 @@ public class Pasajero extends Persona implements Serializable
 		actual=nueva;
 		AgregarHistorial(actual);
 	}
-	public void 
+	public void reservarHabitacion()//Terminar
+	{
+		System.out.println("Ingresar el piso de la habitacion: ");
+		int piso=sc.nextInt();
+		System.out.println("Ingresar la cantidad de personas que habitaran la habitacion:  ");
+		int cant=sc.nextInt();
+		System.out.println("Ingresar ");
+		
+	}
 	
 	
 	public String getCiudad()
@@ -97,10 +108,10 @@ public class Pasajero extends Persona implements Serializable
 	{
 		return domicilioOrigen;
 	}
-	public void MostrarDatos()//Muestra todos los gets juntos.
+	public void MostrarPasajero()//Muestra todos los gets juntos.
 	{
-		System.out.println("Nombre: "+ getNombre());
-		System.out.println("DNI: "+getDNI());
+		System.out.println("Tipo de usuario: Pasajero");
+		MostrarUsuario();
 		System.out.println("Ciudad de origen: "+getCiudad());
 		System.out.println("Domicilio de procedenci: "+getDomicilio());
 		

@@ -32,4 +32,10 @@ public class Persona {
 	 {
 		 this.dni=dni;
 	 }
+	 
+	 public void MostrarPersona()
+	 {
+		 System.out.println("Nombre de la persona: "+getNombre());
+		 System.out.println("DNI: "+getDNI());
+	 }
 }

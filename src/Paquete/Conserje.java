@@ -1,6 +1,7 @@
 package Paquete;
+import java.io.Serializable;
 
-public class Conserje extends UserHotel
+public class Conserje extends UserHotel  implements Serializable
 {
 		private String empleadoID; //pensar si mantener atributo
 	

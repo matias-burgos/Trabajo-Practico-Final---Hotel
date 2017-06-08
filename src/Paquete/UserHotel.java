@@ -1,10 +1,11 @@
 package Paquete;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class UserHotel extends Persona{
+public class UserHotel extends Persona implements Serializable {
 	String user;//Nombre de usuario.
-	protected String contrasenha;//Contraseña del usuario.
+	transient String contrasenha;//Contraseña del usuario.
 	Scanner sc=new Scanner(System.in);
 	public UserHotel()
 	{
@@ -19,6 +20,15 @@ public class UserHotel extends Persona{
 		this.user=user;
 		this.contrasenha=contrasenha;
 	}
+	//Opcional
+	public String toString(){
+	    String texto=(contrasenha==null) ? "(no disponible)" : contrasenha;
+	    texto+=nombre;
+	    return texto;
+	  }
+	
+	
+	//Gets/Sets.
 	
 	public String getUser()
 	{
@@ -30,22 +40,19 @@ public class UserHotel extends Persona{
 	}
 	
 	
-	private void setContrasenha(String contra)
+	public void setContrasenha(String contra)
 	{
 		contrasenha=contra;
 	}
-	private String getContrasenha()
+	public String getContrasenha()
 	{
 		return contrasenha;
 	}
 	
 	public void MostrarUsuario()
 	{
-		
-		System.out.println("Nombre de la persona: "+getNombre());
-		System.out.println("Nombre de usuario: "+getUser());
-		System.out.println("DNI: "+getDNI());
-		
+		MostrarPersona();
+		System.out.println("Nombre de usuario: "+getUser());	
 	}
 	
 	//Cambiar contrase�a del usuario.

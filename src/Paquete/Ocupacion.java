@@ -1,8 +1,9 @@
 package Paquete;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ocupacion {
+public class Ocupacion implements Serializable {
 
 	boolean ocupada;//Si la habitacion se encuentra ocupada (true) o disponible (false)
 	int periodoOcupacion;//Es el periodo por el que la habitacion esta ocupada.
@@ -66,7 +67,7 @@ public class Ocupacion {
 		for(Pasajero aux:listaHabitantes)
 		{
 			System.out.println("------------------------------------------ Habitante "+i+"------------------------------------------");
-			aux.MostrarDatos();
+			aux.MostrarPasajero();
 			i++;
 		}
 	}
@@ -76,7 +77,7 @@ public class Ocupacion {
 	}
 	public void getResponsable()//Muestra la informacion del pasajeros que alquila la habitacion.
 	{
-		responsable.MostrarDatos();
+		responsable.MostrarPasajero();
 	}
 	public boolean getOcupada()
 	{
