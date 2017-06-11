@@ -76,6 +76,9 @@ public class MenuPasajero extends JFrame implements Serializable{
 		JButton btnSalir = new JButton("salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Login nuevo=new Login();
+				nuevo.setVisible(true);
 				
 			}
 		});

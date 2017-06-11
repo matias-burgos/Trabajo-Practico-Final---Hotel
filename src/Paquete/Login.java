@@ -96,9 +96,10 @@ public class Login implements Serializable{
 				try
 				{
 					salidaPasajero=new FileInputStream("Pasajero.dat");
-					ObjectInputStream lectura=new ObjectInputStream(salidaPasajero); 
-					aux=(Pasajero)lectura.readObject();
+					ObjectInputStream lecturaPasajero=new ObjectInputStream(salidaPasajero); 
+					aux=(Pasajero)lecturaPasajero.readObject();
 					System.out.println("asdas");
+					//Recorrido por el archivo de usuarios.
 					while(aux!=null)//Recorrido del archivo
 				{
 						//Comprobacion.
@@ -106,26 +107,21 @@ public class Login implements Serializable{
 						{
 							
 							JOptionPane.showMessageDialog(frmHotelSawuel,  "entraste");
-							MenuAdministrador nuevo=new MenuAdministrador();
-							//MenuAdministrador nuevo=new MenuAdministrador();
-							
+							MenuPasajero nuevo=new MenuPasajero();
 							nuevo.setVisible(true);
 							frmHotelSawuel.setVisible(false);
-							comprob=1;
-							
+							comprob=comprob+1;
 						}
 						else
 						{
 							JOptionPane.showMessageDialog(frmHotelSawuel, "no enstraste");
-							MenuPasajero nuevo=new MenuPasajero();
-							nuevo.setVisible(true);
-							frmHotelSawuel.setVisible(false);
-							comprob=1;
+						
 							
 						}
-						aux=(Pasajero)lectura.readObject();
+						
+						aux=(Pasajero)lecturaPasajero.readObject();
 					}
-					lectura.close();
+					lecturaPasajero.close();
 					
 				} catch (FileNotFoundException e) {
 					System.out.println("Problema al usar el archivo de pasajeros: ");
@@ -137,16 +133,94 @@ public class Login implements Serializable{
 					System.out.println("Problema al usar el archivo de pasajeros: ");
 					e.printStackTrace();
 				}
-				finally 
-				{
+				
+		
+				FileInputStream salidaConserje;
+				try {
+					salidaConserje=new FileInputStream("Conserje.dat");
+					ObjectInputStream lecturaConserje=new ObjectInputStream(salidaConserje);
+					Conserje auxConserje=(Conserje)lecturaConserje.readObject();
+					//Recorrido del archivo de conserjes.
+					while(auxConserje!=null)//Recorrido del archivo
+					{
+							//Comprobacion.
+							if(nombre.equals(auxConserje.getUser()) && contraseña.equals(auxConserje.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
+							{
+								
+								JOptionPane.showMessageDialog(frmHotelSawuel,  "entraste");
+								MenuConserje nuevo=new MenuConserje();
+								nuevo.setVisible(true);
+								frmHotelSawuel.setVisible(false);
+								comprob=comprob+1;
+								
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(frmHotelSawuel, "no enstraste");
+								
+								
+							}
+							
+							auxConserje=(Conserje)lecturaConserje.readObject();
+						}
+						lecturaConserje.close();
 					
+				} catch (Exception e) {
+					System.out.println("Problema al usar el archivo de conserje: ");
+					e.printStackTrace();
 				}
+				
+				FileInputStream salidaAdministrador;
+				try {
+					salidaAdministrador=new FileInputStream("Administrador.dat");
+					ObjectInputStream lecturaAdministrador=new ObjectInputStream(salidaAdministrador);
+					Conserje auxAdministrador=(Conserje)lecturaAdministrador.readObject();
+					//Recorrido del archivo de administrador.
+					while(auxAdministrador!=null)//Recorrido del archivo
+					{
+							//Comprobacion.
+							if(nombre.equals(auxAdministrador.getUser()) && contraseña.equals(auxAdministrador.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
+							{
+								
+								JOptionPane.showMessageDialog(frmHotelSawuel,  "entraste");
+								MenuAdministrador nuevo=new MenuAdministrador();
+								nuevo.setVisible(true);
+								frmHotelSawuel.setVisible(false);
+								comprob=comprob+1;
+								
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(frmHotelSawuel, "no enstraste");
+								
+								
+							}
+							
+							auxAdministrador=(Conserje)lecturaAdministrador.readObject();
+						}
+						lecturaAdministrador.close();
+					
+				} catch (Exception e) {
+					System.out.println("Problema al usar el archivo de administrador: ");
+					e.printStackTrace();
+				}
+					
+					
+				
 			}
 		});
 		
 		JLabel lblBienvenidoAlHotel = new JLabel("Bienvenido al hotel Sawuel");
 		lblBienvenidoAlHotel.setFont(new Font("Swis721 BlkEx BT", Font.BOLD, 18));
 		lblBienvenidoAlHotel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				System.exit(0);
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frmHotelSawuel.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -168,6 +242,9 @@ public class Login implements Serializable{
 							.addGap(25)
 							.addComponent(lblBienvenidoAlHotel, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(28, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(345, Short.MAX_VALUE)
+					.addComponent(btnSalir))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -183,7 +260,8 @@ public class Login implements Serializable{
 						.addComponent(contraseñaUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnAceptar)
-					.addContainerGap(60, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addComponent(btnSalir))
 		);
 		frmHotelSawuel.getContentPane().setLayout(groupLayout);
 	}
