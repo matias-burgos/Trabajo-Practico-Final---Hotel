@@ -25,9 +25,6 @@ public class InicioSesion extends JFrame {
 	private JPasswordField contraseñaUsuario;
 	private JTextField nombreUsuario;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +38,6 @@ public class InicioSesion extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public InicioSesion() {
 		setTitle("Hotel Sawuel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,11 +61,13 @@ public class InicioSesion extends JFrame {
 		contentPane.add(contraseña);
 		
 		contraseñaUsuario = new JPasswordField();
+		contraseñaUsuario.setForeground(Color.WHITE);
 		contraseñaUsuario.setBackground(Color.BLACK);
 		contraseñaUsuario.setBounds(207, 130, 115, 20);
 		contentPane.add(contraseñaUsuario);
 		
 		nombreUsuario = new JTextField();
+		nombreUsuario.setForeground(Color.WHITE);
 		nombreUsuario.setBackground(Color.BLACK);
 		nombreUsuario.setBounds(207, 69, 121, 20);
 		contentPane.add(nombreUsuario);
