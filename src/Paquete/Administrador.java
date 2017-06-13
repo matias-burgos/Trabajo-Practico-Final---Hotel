@@ -22,9 +22,14 @@ import java.io.Serializable;
 
 public class Administrador extends UserHotel implements Serializable {
 	
+	static int cantConserje;
+	static int cantPasajero;
+	
 	public Administrador()
 	{
 		super();
+		cantConserje=0;
+		cantPasajero=0;
 	}
 	public Administrador(String nombre, int dni, String user, String contrasenha)
 	{
@@ -290,6 +295,22 @@ public class Administrador extends UserHotel implements Serializable {
 	
 	//Recorre un archivo de habitaciones y la elmina segun el numero de habitacion
 	public void eliminarHabitacion()
+	{
+		
+	}
+	
+	
+	public void crearHabitacion()
+	{
+		
+	}
+	
+	public void crearPasajero()
+	{
+		
+	}
+	
+	public void borrarPasajero()
 	{
 		
 	}
