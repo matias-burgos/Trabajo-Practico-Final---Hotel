@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -84,15 +85,14 @@ public class InicioSesion extends JFrame {
 				int comprob=0;//Comprueba si el nombre de usuario y la contraseña es encontrada.
 				Pasajero aux;
 				try {
-					salidaPasajero=new FileInputStream("Pasajero.dat");
+					salidaPasajero=new FileInputStream("Pasajeros.dat");
 					ObjectInputStream lecturaPasajero=new ObjectInputStream(salidaPasajero); 
 					aux=(Pasajero)lecturaPasajero.readObject();
-					System.out.println("asdas");
 					//Recorrido por el archivo de usuarios.
 					while(aux!=null)//Recorrido del archivo
-				{
+					{
 						//Comprobacion.
-						if(nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
+						if(nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha()))
 						{
 							
 							JOptionPane.showMessageDialog(btnAceptar,  "entraste");
@@ -101,12 +101,7 @@ public class InicioSesion extends JFrame {
 							setVisible(false);
 							comprob=comprob+1;
 						}
-						else
-						{
-							JOptionPane.showMessageDialog(btnAceptar, "no enstraste");
 						
-							
-						}
 						
 						aux=(Pasajero)lecturaPasajero.readObject();
 					}
@@ -117,8 +112,12 @@ public class InicioSesion extends JFrame {
 				}
 				FileInputStream salidaConserje;
 				try {
-					salidaConserje=new FileInputStream("Conserje.dat");
+					salidaConserje=new FileInputStream("Conserjes.dat");
 					ObjectInputStream lecturaConserje=new ObjectInputStream(salidaConserje);
+				
+					
+				
+				
 					Conserje auxConserje=(Conserje)lecturaConserje.readObject();
 					//Recorrido del archivo de conserjes.
 					while(auxConserje!=null)//Recorrido del archivo
@@ -134,12 +133,7 @@ public class InicioSesion extends JFrame {
 								comprob=comprob+1;
 								
 							}
-							else
-							{
-								JOptionPane.showMessageDialog(btnAceptar, "no enstraste");
-								
-								
-							}
+							
 							
 							auxConserje=(Conserje)lecturaConserje.readObject();
 						}
@@ -166,18 +160,17 @@ public class InicioSesion extends JFrame {
 								comprob=comprob+1;
 								
 							}
-							else
-							{
-								JOptionPane.showMessageDialog(btnAceptar, "no enstraste");
-								
-								
-							}
+							
 							
 							auxAdministrador=(Conserje)lecturaAdministrador.readObject();
 						}
 						lecturaAdministrador.close();
 				} catch (Exception e2) {
 					System.out.println("Error al usar archivo de administrador: "+e2);
+				}
+				if(comprob==0)
+				{
+					JOptionPane.showMessageDialog(btnAceptar, "Esa convinacion de nombre y usuario no existe", "Error al iniciar sesion", JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}
