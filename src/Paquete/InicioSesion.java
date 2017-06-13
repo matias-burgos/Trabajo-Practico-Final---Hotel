@@ -145,7 +145,7 @@ public class InicioSesion extends JFrame {
 				try {
 					salidaAdministrador=new FileInputStream("Administrador.dat");
 					ObjectInputStream lecturaAdministrador=new ObjectInputStream(salidaAdministrador);
-					Conserje auxAdministrador=(Conserje)lecturaAdministrador.readObject();
+					Administrador auxAdministrador=(Administrador)lecturaAdministrador.readObject();
 					//Recorrido del archivo de administrador.
 					while(auxAdministrador!=null)//Recorrido del archivo
 					{
@@ -154,15 +154,15 @@ public class InicioSesion extends JFrame {
 							{
 								
 								JOptionPane.showMessageDialog(btnAceptar,  "entraste");
-								MenuAdministrador nuevo=new MenuAdministrador();
-								nuevo.setVisible(true);
+								//MenuAdministrador nuevo=new MenuAdministrador();
+								//nuevo.setVisible(true);
 								setVisible(false);
 								comprob=comprob+1;
 								
 							}
 							
 							
-							auxAdministrador=(Conserje)lecturaAdministrador.readObject();
+							auxAdministrador=(Administrador)lecturaAdministrador.readObject();
 						}
 						lecturaAdministrador.close();
 				} catch (Exception e2) {
@@ -187,6 +187,15 @@ public class InicioSesion extends JFrame {
 		});
 		btnSalir.setBounds(345, 239, 89, 23);
 		contentPane.add(btnSalir);
+		
+		JButton btnCrearCuenta = new JButton("Crear Cuenta");
+		btnCrearCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CrearCuenta nueva=new CrearCuenta();
+				nueva.setVisible(true);
+			}
+		});
+		btnCrearCuenta.setBounds(306, 11, 128, 23);
+		contentPane.add(btnCrearCuenta);
 	}
-
 }

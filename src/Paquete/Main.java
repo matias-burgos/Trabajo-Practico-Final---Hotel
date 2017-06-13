@@ -30,11 +30,11 @@ public class Main {
 		}
 		
 		Administrador nuevoAdmin=new Administrador("Ivo", 1214, "ivo", "1230");
-		FileOutputStream entradaAmin;
+		FileOutputStream entradaAdmin;
 		try
 		{
-			entradaAmin=new FileOutputStream("Administrador.dat");
-			ObjectOutputStream escrituraAdmin=new ObjectOutputStream(entradaAmin);
+			entradaAdmin=new FileOutputStream("Administrador.dat");
+			ObjectOutputStream escrituraAdmin=new ObjectOutputStream(entradaAdmin);
 			escrituraAdmin.writeObject(nuevoAdmin);
 			escrituraAdmin.close();
 		} catch (FileNotFoundException e)
