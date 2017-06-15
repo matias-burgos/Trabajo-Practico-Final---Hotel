@@ -193,6 +193,7 @@ public class InicioSesion extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				CrearCuenta nueva=new CrearCuenta();
 				nueva.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnCrearCuenta.setBounds(306, 11, 128, 23);
