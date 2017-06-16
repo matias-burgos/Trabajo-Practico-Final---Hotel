@@ -141,5 +141,9 @@ public class CrearReserva extends JFrame {
 		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
 		comboBox_3.setBounds(279, 156, 60, 20);
 		contentPane.add(comboBox_3);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(279, 15, 145, 112);
+		contentPane.add(panel);
 	}
 }

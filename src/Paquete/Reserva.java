@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class Reserva {
 	
-	Persona responsable=new Pasajero();//Responsable de la reserva de la habitacion.
-	Habitacion reservada=new Habitacion();//Habitacion que se reservara.
+	Pasajero responsable;//Responsable de la reserva de la habitacion.
+	Habitacion reservada;//Habitacion que se reservara.
 	int periodo=0;//Periodo en el que se reservara.
 	
 	
@@ -49,7 +49,7 @@ public class Reserva {
 			Habitacion aux=(Habitacion)lectura.readObject();
 			while(aux!=null)
 			{
-				if(aux.getMaxHabi()==cantPasajeros && aux.getPiso()==piso && aux.ocup.getPeriodo()==periodo)
+				if(aux.getMaxHabi()==cantPasajeros && aux.getPiso()==piso && aux.getOcup()==false && aux.getOcup()==false)
 				{
 					aux.MostrarHabitacion();
 					comprob=comprob++;
@@ -81,47 +81,33 @@ public class Reserva {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	/*
-	boolean reservada;//Si la habitacion se encuentra reservada (true) o disponible(false)
-	Pasajero responsable;//Guarda los datos de la persona que realiza la reserva.
-	
 	public Reserva()
 	{
-		reservada=false;
+		reservada=new Habitacion();
 		responsable=new Pasajero();
 	}
 	
-	public void RealizarReserva(Pasajero responsable)//Asigna a reserva el pasajero que realiza la reserva.
+	public void RealizarReserva(Pasajero responsable, Habitacion reservada)//Asigna a reserva el pasajero que realiza la reserva.
 	{
 		this.responsable=responsable;
-		reservada=true;
+		this.reservada=reservada;
 	}	
 	
 	public void MostrarReserva()
 	{
-		if(reservada==true)
-		{
-			System.out.println("La habitacion se encuentra reservada");
-			System.out.println("El responsable de la reserva: "+getResponsable());
-		}
-		else{
-			System.out.println("No se ha realizado ninguna reserva");
-		}
+		System.out.println("La habitacion se encuentra reservada");
+		System.out.println("El responsable de la reserva: "+getResponsable());
+		System.out.println("Habitacion reservada: ");
+		reservada.MostrarHabitacion();
 		
 	}
 	
-	public boolean getReservado()//Retorna un boolean si la habitacion estareservada o no.
+	public Habitacion getHabitacionReservada()//Retorna un boolean si la habitacion estareservada o no.
 	{
 		return reservada;
 	}
 	public Pasajero getResponsable()//Retorna el pasajero que reservo la habitacion.
 	{
 		return responsable;
-	}*/
+	}
 }

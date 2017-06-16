@@ -96,7 +96,7 @@ public class InicioSesion extends JFrame {
 						{
 							
 							JOptionPane.showMessageDialog(btnAceptar,  "entraste");
-							MenuPasajero nuevo=new MenuPasajero();
+							MenuPasajero nuevo=new MenuPasajero(aux);
 							nuevo.setVisible(true);
 							setVisible(false);
 							comprob=comprob+1;
@@ -127,7 +127,7 @@ public class InicioSesion extends JFrame {
 							{
 								
 								JOptionPane.showMessageDialog(btnAceptar,  "entraste");
-								MenuConserje nuevo=new MenuConserje();
+								MenuConserje nuevo=new MenuConserje(auxConserje);
 								nuevo.setVisible(true);
 								setVisible(false);
 								comprob=comprob+1;
@@ -182,6 +182,7 @@ public class InicioSesion extends JFrame {
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(btnAceptar,  "Hasta la proxima");
 				System.exit(0);
 			}
 		});

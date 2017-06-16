@@ -10,14 +10,11 @@ public class Habitacion implements Serializable {
 		int numero;//Numero de habitacion.
 		int piso;//Piso de habitacion.
 		int cantMax;//Cantidad maxima de pasajeros.
-		
-		Ocupacion ocup;//Atributo que designa la ocupacion de la habitacion.
-		Reserva reserv;//Atrivuto que designa la reserva de la habitacion.
+		boolean ocup;//Atributo que designa la ocupacion de la habitacion.
+		boolean reserv;//Atrivuto que designa la reserva de la habitacion.
 		
 		public Habitacion()//Inicializacion.
 		{
-			ocup=new Ocupacion();
-			reserv=new Reserva();
 			numero=0;
 			piso=0;
 			cantMax=0;
@@ -32,12 +29,14 @@ public class Habitacion implements Serializable {
 		}
 		
 		
-		public void asignarHabitacion(Pasajero responsable, ArrayList<Pasajero> pasajeros, int periodo)//Llama a la funcion de Ocupacion para ocupar la habitacion.
+		public boolean getReserv()
 		{
-			ocup.asignarHabitacion(responsable, pasajeros, periodo);
+			return reserv;
 		}
-		
-		
+		public boolean getOcup()
+		{
+			return ocup;
+		}
 		
 		public int getNumero()
 		{
@@ -54,15 +53,17 @@ public class Habitacion implements Serializable {
 		
 		public void MostrarHabitacion()//Muestra todos los datos de la habitacion.
 		{
+			if(ocup==true)
+			{
+				System.out.println("La habitacion se encuentra ocupada");
+			}
+			if(reserv==true)
+			{
+				System.out.println("La habitacion se encuentra reservada");
+			}
 			System.out.println("Numero de habitacion: "+getNumero());
 			System.out.println("Piso de la habitacion: "+getPiso());
 			System.out.println("Cantidad maxima de habitantes de la habitacion: "+getMaxHabi());
-			if(ocup.ocupada==true)
-			{
-				ocup.MuestreoOcupantes();
-			}
-		
-			
 			
 		}
 		
