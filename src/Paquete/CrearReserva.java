@@ -49,9 +49,9 @@ public class CrearReserva extends JFrame {
 		lblPiso.setBounds(10, 57, 60, 14);
 		contentPane.add(lblPiso);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(10, 82, 60, 20);
-		contentPane.add(spinner);
+		JSpinner piso = new JSpinner();
+		piso.setBounds(10, 82, 60, 20);
+		contentPane.add(piso);
 		
 		JLabel lblPeriodoDeOcupacion = new JLabel("Periodo de ocupacion");
 		lblPeriodoDeOcupacion.setBounds(10, 113, 124, 14);
@@ -121,5 +121,20 @@ public class CrearReserva extends JFrame {
 		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
 		comboBox_3.setBounds(279, 156, 60, 20);
 		contentPane.add(comboBox_3);
+		
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(335, 212, 89, 23);
+		contentPane.add(btnAceptar);
+		
+		JButton btnVerHabitacionesDisponibles = new JButton("Ver habitaciones disponibles");
+		btnVerHabitacionesDisponibles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int pisoSelect=Integer.parseInt(piso.getSelectItem());
+				
+				
+			}
+		});
+		btnVerHabitacionesDisponibles.setBounds(232, 7, 101, 32);
+		contentPane.add(btnVerHabitacionesDisponibles);
 	}
 }

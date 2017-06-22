@@ -11,10 +11,11 @@ public class Login
 	 * @param pass
 	 * @return 1 si es pasejero - 0 si es conseje - 2 si es administrador - (-1) si no es nada
 	 */
-	public static int iniciar(String nombre, String contraseña)
+	public static int iniciar()
 	{
 		int rta=-1;
-		
+		String nombre=InicioSesion.nombreUsuario.getText();
+		String contraseña=InicioSesion.contraseñaUsuario.getText();
 		FileInputStream salidaConserje;
 		try {
 			salidaConserje=new FileInputStream("Conserjes.dat");

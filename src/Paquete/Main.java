@@ -80,7 +80,7 @@ public class Main {
 		comienzo.setVisible(true);
 		
 		
-
+		
 
 	}
 

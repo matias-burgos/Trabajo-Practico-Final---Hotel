@@ -23,8 +23,9 @@ import java.awt.event.ActionEvent;
 public class InicioSesion extends JFrame {
 
 	private JPanel contentPane;
-	private JPasswordField contraseñaUsuario;
-	private JTextField nombreUsuario;
+	//Siendo static puedo tener acceso a estas variables en cualquier lugar del proyecto.
+	public static JPasswordField contraseñaUsuario;
+	public static JTextField nombreUsuario;
 
 	public InicioSesion() {
 		setTitle("Hotel Sawuel");
@@ -63,17 +64,18 @@ public class InicioSesion extends JFrame {
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String nombre=nombreUsuario.getText();//Obtiene lo escrito por el usuario en el "nombre de usuario", y lo almacena en un string.
-				String contraseña=contraseñaUsuario.getText();//Obtiene lo escrito por el usuario en la "contraseña", y lo guarda en un string.
+			public void actionPerformed(ActionEvent e) 
+			{
 				//Busca en el archivo el nombre de usuario y la contraseña ingresadas.
-				int rta = Login.iniciar(nombre, contraseña);
+				int rta = Login.iniciar();
 				switch (rta) {
 				case -1:
-					
+					JOptionPane.showMessageDialog(btnAceptar, "La combinacion de nombre y contraseña no existe", "Error al ingresar datos", JOptionPane.ERROR_MESSAGE);
 					break;
 				case 1:
 					break;
+				case 3:
+					
 				default:
 					break;
 				}
