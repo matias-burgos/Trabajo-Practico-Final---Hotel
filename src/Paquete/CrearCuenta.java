@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import java.awt.Color;
+
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
@@ -26,23 +28,8 @@ public class CrearCuenta extends JDialog {
 	private JTextField dni;
 	private JTextField nombreUsuario;
 	private JPasswordField contraseña;
+	ButtonGroup grupo1 = new ButtonGroup();
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			CrearCuenta dialog = new CrearCuenta();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
 	public CrearCuenta() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -73,8 +60,9 @@ public class CrearCuenta extends JDialog {
 				int dniAux=Integer.parseInt(dni.getText());
 				String contraseñaAux=contraseña.getText();
 				String usuarioAux=nombreUsuario.getText();
-				
-				
+				Conserje nuevo=new Conserje();
+				//nuevo.crearUsuario(nombreAux, apellidoAux, dniAux, contraseñaAux, usuarioAux);
+				//nuevo.AgregarUsuario();
 				
 			}
 		});
@@ -153,15 +141,15 @@ public class CrearCuenta extends JDialog {
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Administrador");
 		rdbtnNewRadioButton.setBounds(295, 70, 109, 23);
 		contentPanel.add(rdbtnNewRadioButton);
-		
+		grupo1.add(rdbtnNewRadioButton);
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Conserje");
 		rdbtnNewRadioButton_1.setBounds(295, 111, 109, 23);
 		contentPanel.add(rdbtnNewRadioButton_1);
-		
+		grupo1.add(rdbtnNewRadioButton_1);
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Pasajero");
 		rdbtnNewRadioButton_2.setBounds(295, 153, 109, 23);
 		contentPanel.add(rdbtnNewRadioButton_2);
-		
+		grupo1.add(rdbtnNewRadioButton_2);
 		JLabel lblElegirTipoDe = new JLabel("Elegir tipo de cuenta");
 		lblElegirTipoDe.setForeground(Color.WHITE);
 		lblElegirTipoDe.setBounds(287, 46, 137, 14);

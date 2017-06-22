@@ -1,12 +1,18 @@
 package Paquete;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import javax.swing.JOptionPane;
 
 public class Main {
 
+	
+	
 	public static void main(String[] args) {
 		
 		Pasajero nuevoPasj=new Pasajero("pepe", 123, "Mardel", "kappa", "Pepe", "1230");
@@ -17,7 +23,8 @@ public class Main {
 			ObjectOutputStream escrituraPasaj=new ObjectOutputStream(entradaPasajeros);
 			escrituraPasaj.writeObject(nuevoPasj);
 			escrituraPasaj.close();
-		} catch (FileNotFoundException e)
+		}
+		catch (FileNotFoundException e)
 		{
 			System.out.println("Error al usar el archivo de pasajeros: ");
 			e.printStackTrace();
@@ -71,6 +78,8 @@ public class Main {
 		
 		InicioSesion comienzo=new InicioSesion();
 		comienzo.setVisible(true);
+		
+		
 
 
 	}

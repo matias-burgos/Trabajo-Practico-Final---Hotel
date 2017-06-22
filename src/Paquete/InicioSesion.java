@@ -26,19 +26,6 @@ public class InicioSesion extends JFrame {
 	private JPasswordField contraseñaUsuario;
 	private JTextField nombreUsuario;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InicioSesion frmHotelSawuel = new InicioSesion();
-					frmHotelSawuel.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public InicioSesion() {
 		setTitle("Hotel Sawuel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,23 +41,23 @@ public class InicioSesion extends JFrame {
 		contentPane.add(lblBienvenidoAlHotel);
 		
 		JLabel nombreDeUsuario = new JLabel("Nombre de usuario");
-		nombreDeUsuario.setBounds(75, 72, 102, 14);
+		nombreDeUsuario.setBounds(75, 115, 102, 14);
 		contentPane.add(nombreDeUsuario);
 		
 		JLabel contraseña = new JLabel("Contrasea");
-		contraseña.setBounds(75, 133, 102, 14);
+		contraseña.setBounds(75, 151, 102, 14);
 		contentPane.add(contraseña);
 		
 		contraseñaUsuario = new JPasswordField();
 		contraseñaUsuario.setForeground(Color.WHITE);
 		contraseñaUsuario.setBackground(Color.BLACK);
-		contraseñaUsuario.setBounds(207, 130, 115, 20);
+		contraseñaUsuario.setBounds(204, 148, 115, 20);
 		contentPane.add(contraseñaUsuario);
 		
 		nombreUsuario = new JTextField();
 		nombreUsuario.setForeground(Color.WHITE);
 		nombreUsuario.setBackground(Color.BLACK);
-		nombreUsuario.setBounds(207, 69, 121, 20);
+		nombreUsuario.setBounds(204, 112, 121, 20);
 		contentPane.add(nombreUsuario);
 		nombreUsuario.setColumns(10);
 		
@@ -78,105 +65,27 @@ public class InicioSesion extends JFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre=nombreUsuario.getText();//Obtiene lo escrito por el usuario en el "nombre de usuario", y lo almacena en un string.
-				String contraseña=contraseñaUsuario.getText();//Obtiene lo escrito por el usuario en la "contraseña", y lo guarda en un string./
-				//Busca en el archivo de pasajeros el nombre de usuario y la contraseña ingresadas.
-				
-				FileInputStream salidaPasajero=null;
-				int comprob=0;//Comprueba si el nombre de usuario y la contraseña es encontrada.
-				Pasajero aux;
-				try {
-					salidaPasajero=new FileInputStream("Pasajeros.dat");
-					ObjectInputStream lecturaPasajero=new ObjectInputStream(salidaPasajero); 
-					aux=(Pasajero)lecturaPasajero.readObject();
-					//Recorrido por el archivo de usuarios.
-					while(aux!=null)//Recorrido del archivo
-					{
-						//Comprobacion.
-						if(nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha()))
-						{
-							
-							JOptionPane.showMessageDialog(btnAceptar,  "entraste");
-							MenuPasajero nuevo=new MenuPasajero();
-							nuevo.setVisible(true);
-							setVisible(false);
-							comprob=comprob+1;
-						}
-						
-						
-						aux=(Pasajero)lecturaPasajero.readObject();
-					}
-					lecturaPasajero.close();
+				String contraseña=contraseñaUsuario.getText();//Obtiene lo escrito por el usuario en la "contraseña", y lo guarda en un string.
+				//Busca en el archivo el nombre de usuario y la contraseña ingresadas.
+				int rta = Login.iniciar(nombre, contraseña);
+				switch (rta) {
+				case -1:
 					
-				} catch (Exception e2) {
-					System.out.println("Problemas al usar el archivo de pasajeros"+e2);
+					break;
+				case 1:
+					break;
+				default:
+					break;
 				}
-				FileInputStream salidaConserje;
-				try {
-					salidaConserje=new FileInputStream("Conserjes.dat");
-					ObjectInputStream lecturaConserje=new ObjectInputStream(salidaConserje);
-				
-					
 				
 				
-					Conserje auxConserje=(Conserje)lecturaConserje.readObject();
-					//Recorrido del archivo de conserjes.
-					while(auxConserje!=null)//Recorrido del archivo
-					{
-							//Comprobacion.
-							if(nombre.equals(auxConserje.getUser()) && contraseña.equals(auxConserje.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
-							{
-								
-								JOptionPane.showMessageDialog(btnAceptar,  "entraste");
-								MenuConserje nuevo=new MenuConserje();
-								nuevo.setVisible(true);
-								setVisible(false);
-								comprob=comprob+1;
-								
-							}
-							
-							
-							auxConserje=(Conserje)lecturaConserje.readObject();
-						}
-						lecturaConserje.close();
-				} catch (Exception e2) {
-					System.out.println("Error al usar archivo de conserje: "+e2);
-				}
-				FileInputStream salidaAdministrador;
-				try {
-					salidaAdministrador=new FileInputStream("Administrador.dat");
-					ObjectInputStream lecturaAdministrador=new ObjectInputStream(salidaAdministrador);
-					Administrador auxAdministrador=(Administrador)lecturaAdministrador.readObject();
-					//Recorrido del archivo de administrador.
-					while(auxAdministrador!=null)//Recorrido del archivo
-					{
-							//Comprobacion.
-							if(nombre.equals(auxAdministrador.getUser()) && contraseña.equals(auxAdministrador.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
-							{
-								
-								JOptionPane.showMessageDialog(btnAceptar,  "entraste");
-								//MenuAdministrador nuevo=new MenuAdministrador();
-								//nuevo.setVisible(true);
-								setVisible(false);
-								comprob=comprob+1;
-								
-							}
-							
-							
-							auxAdministrador=(Administrador)lecturaAdministrador.readObject();
-						}
-						lecturaAdministrador.close();
-				} catch (Exception e2) {
-					System.out.println("Error al usar archivo de administrador: "+e2);
-				}
-				if(comprob==0)
-				{
-					JOptionPane.showMessageDialog(btnAceptar, "Esa convinacion de nombre y usuario no existe", "Error al iniciar sesion", JOptionPane.ERROR_MESSAGE);
-				}
+				
+				
 				
 			}
 		});
 		btnAceptar.setBackground(Color.GREEN);
-		btnAceptar.setBounds(204, 161, 89, 23);
+		btnAceptar.setBounds(204, 179, 89, 23);
 		contentPane.add(btnAceptar);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -198,5 +107,9 @@ public class InicioSesion extends JFrame {
 		});
 		btnCrearCuenta.setBounds(306, 11, 128, 23);
 		contentPane.add(btnCrearCuenta);
+		
+		JLabel lblTipoDeUsuario = new JLabel("Tipo de usuario");
+		lblTipoDeUsuario.setBounds(75, 76, 89, 14);
+		contentPane.add(lblTipoDeUsuario);
 	}
 }

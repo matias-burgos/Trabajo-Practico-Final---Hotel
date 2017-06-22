@@ -121,4 +121,5 @@ public class Pasajero extends UserHotel implements Serializable
 		
 	}
 	
+	
 }

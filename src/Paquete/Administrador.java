@@ -1,5 +1,6 @@
 /*
  * Administrador: Es el encargado de las funciones administrativas del sistema.
+
  *  Dentro de sus funciones está la realización de back ups de la información, 
  *  la creación de otros usuarios, la asignación de permisos a usuarios, etc.
  * 
@@ -10,7 +11,7 @@ package Paquete;
 
 import java.util.Scanner;
 
-
+import javax.swing.JOptionPane;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -151,6 +152,7 @@ public class Administrador extends UserHotel implements Serializable {
 	
 	
 	
+	
 	/*
 	//Pide al usuario los datos necesarios para crear un objeto de tipo conserje
 	public Conserje crearConserje()
@@ -262,7 +264,7 @@ public class Administrador extends UserHotel implements Serializable {
 	{
 		
 	}
-	
+
 	
 	
 	//Ejemplo.
