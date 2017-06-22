@@ -22,9 +22,14 @@ import java.io.Serializable;
 
 public class Administrador extends UserHotel implements Serializable {
 	
+	static int cantConserje;
+	static int cantPasajero;
+	
 	public Administrador()
 	{
 		super();
+		cantConserje=0;
+		cantPasajero=0;
 	}
 	public Administrador(String nombre, int dni, String user, String contrasenha)
 	{
@@ -289,9 +294,135 @@ public class Administrador extends UserHotel implements Serializable {
 	
 	
 	//Recorre un archivo de habitaciones y la elmina segun el numero de habitacion
-	public void eliminarHabitacion()
+	//NOTA: El archivo de habitaciones que se usa es habitaciones.dat con H minuscula
+	public void eliminarHabitacion(int numero)
 	{
+		FileInputStream habitacion;
+		try
+		{
+			habitacion = new FileInputStream("Empleados.dat");
+			ObjectInputStream lectura = new ObjectInputStream(habitacion);
+			Habitacion aux=(Habitacion)lectura.readObject();
+						
+			while(aux != null)
+			{
+				aux=(Habitacion)lectura.readObject();
+				
+				if(aux.getNumero()==numero)
+				{
+					aux = null;
+				}			
+			}
+			
+			lectura.close();
+		}
 		
+		catch(NullPointerException ex)
+		{
+			System.out.println("El archivo esta vacio: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+		catch(ClassNotFoundException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+	}
+	
+	
+	
+	//Crea una habitacion y la mete en el archivo de habitaciones.dat
+	//NOTA: El archivo de habitaciones que se usa es habitaciones.dat con H minuscula
+	public void crearHabitacion(int numero, int piso, int cantMax)
+	{
+		Habitacion nuevo = new Habitacion (numero, piso, cantMax);
+		
+		
+		FileOutputStream habitaciones;
+		
+		try
+		{
+			habitaciones=new FileOutputStream("habitaciones.dat");
+			ObjectOutputStream escritura=new ObjectOutputStream(habitaciones);
+			escritura.writeObject(nuevo);
+			escritura.close();
+		}
+		catch(FileNotFoundException ex)
+		{
+			System.out.println("No se pudo crear el archivo: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo crear el archivo:"+ex);
+		}
+	}
+	
+	
+	
+	
+	public void crearPasajero(String nombre, int dni, String ciudad, String domicilio, String usuario, String contrasenia)
+	{
+		Pasajero nuevo = new Pasajero (nombre, dni, ciudad, domicilio, usuario, contrasenia);
+		
+		
+		FileOutputStream pasajeros;
+		
+		try
+		{
+			pasajeros=new FileOutputStream("Pasajeros.dat");
+			ObjectOutputStream escritura=new ObjectOutputStream(pasajeros);
+			escritura.writeObject(nuevo);
+			escritura.close();
+		}
+		catch(FileNotFoundException ex)
+		{
+			System.out.println("No se pudo crear el archivo: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo crear el archivo:"+ex);
+		}
+	}
+	
+	
+	
+	
+	public void borrarPasajero(int dni)
+	{
+		FileInputStream pasajero;
+		try
+		{
+			pasajero = new FileInputStream("Pasajero.dat");
+			ObjectInputStream lectura = new ObjectInputStream(pasajero);
+			Pasajero aux=(Pasajero)lectura.readObject();
+						
+			while(aux != null)
+			{
+				aux=(Pasajero)lectura.readObject();
+				
+				if(aux.getDNI()==dni)
+				{
+					aux = null;
+				}			
+			}
+			
+			lectura.close();
+		}
+		
+		catch(NullPointerException ex)
+		{
+			System.out.println("El archivo esta vacio: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+		catch(ClassNotFoundException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
 	}
 	
 	
