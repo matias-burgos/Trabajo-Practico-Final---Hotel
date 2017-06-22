@@ -74,6 +74,10 @@ public class Administrador extends UserHotel implements Serializable {
 		}
 	}*/
 	
+	
+	//	FUNCIONES DE EMPLEADO
+	
+	
 	//Recorre el archivo de empleados (conserje) y retorna la cantidad.
 	public int cantidadEmpleados() 
 	{
@@ -184,45 +188,6 @@ public class Administrador extends UserHotel implements Serializable {
 	
 	
 	
-	
-	
-	
-	/*
-	//Pide al usuario los datos necesarios para crear un objeto de tipo conserje
-	public Conserje crearConserje()
-	{
-		
-		
-		Scanner sc = new Scanner(System.in);
-		String n;//nombre
-		int d;//dni
-		String u;//usuario
-		String c;//contraseña
-		String id;//ID de empleado
-		
-		System.out.println("Nombre: ");
-		n = sc.nextLine();
-		
-		System.out.println("DNI: ");
-		d = sc.nextInt();
-		
-		System.out.println("Usuario: ");
-		u = sc.nextLine();
-		
-		System.out.println("Contraseña: ");
-		c = sc.nextLine();
-		
-		System.out.println("ID de empleado: ");
-		id= sc.nextLine();
-		
-		Conserje conserje = new Conserje(n, d, u, c, id);
-		
-		sc.close();
-		
-		return conserje;
-	}
-	*/
-	
 	//Crea y a su vez agrega un empleado al archivo de empleados.
 	public void crearEmpleado(String nombre,int dni, String usuario, String pass, String id)
 	{
@@ -292,6 +257,7 @@ public class Administrador extends UserHotel implements Serializable {
 	
 	
 	
+	// FUNCIONES DE HABITACION
 	
 	//Recorre un archivo de habitaciones y la elmina segun el numero de habitacion
 	//NOTA: El archivo de habitaciones que se usa es habitaciones.dat con H minuscula
@@ -300,7 +266,7 @@ public class Administrador extends UserHotel implements Serializable {
 		FileInputStream habitacion;
 		try
 		{
-			habitacion = new FileInputStream("Empleados.dat");
+			habitacion = new FileInputStream("Habitaciones.dat");
 			ObjectInputStream lectura = new ObjectInputStream(habitacion);
 			Habitacion aux=(Habitacion)lectura.readObject();
 						
@@ -344,7 +310,7 @@ public class Administrador extends UserHotel implements Serializable {
 		
 		try
 		{
-			habitaciones=new FileOutputStream("habitaciones.dat");
+			habitaciones=new FileOutputStream("Habitaciones.dat");
 			ObjectOutputStream escritura=new ObjectOutputStream(habitaciones);
 			escritura.writeObject(nuevo);
 			escritura.close();
@@ -360,8 +326,79 @@ public class Administrador extends UserHotel implements Serializable {
 	}
 	
 	
+	//Muestra una habitacion
+	public void verHabitacion()
+	{
+		FileInputStream habitacion;
+		try
+		{
+			habitacion = new FileInputStream("Habitaciones.dat");
+			ObjectInputStream lectura = new ObjectInputStream(habitacion);
+			Habitacion aux=(Habitacion)lectura.readObject();
+			System.out.println("Numero de habitacion: " + aux.getNumero());
+			System.out.println("Cantidad Maxima de pasajeros: " + aux.getMaxHabi());	
+			System.out.println("Piso de habitacion: "+ aux.getPiso());
+			lectura.close();
+			
+		}
+		
+		catch(NullPointerException ex)
+		{
+			System.out.println("El archivo esta vacio: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+		catch(ClassNotFoundException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+	}
 	
 	
+	//Recorre el archivo y muestra las habitaciones
+	public void mostrarHabitaciones()
+	{
+		FileInputStream habitacion;
+		try
+		{
+			habitacion = new FileInputStream("Habitaciones.dat");
+			ObjectInputStream lectura = new ObjectInputStream(habitacion);
+			Habitacion aux=(Habitacion)lectura.readObject();
+				
+			
+			while(aux != null)
+			{
+				aux=(Habitacion)lectura.readObject();
+				System.out.println("Numero de habitacion: " + aux.getNumero());
+				System.out.println("Cantidad Maxima de pasajeros: " + aux.getMaxHabi());	
+				System.out.println("Piso de habitacion: "+ aux.getPiso());
+			}
+			
+			lectura.close();
+		}
+		
+		
+		catch(NullPointerException ex)
+		{
+			System.out.println("El archivo esta vacio: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+		catch(ClassNotFoundException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+	}
+
+	
+	
+	// FUNCIONES DE PASAJERO
+	
+	//Crea un pasajero y lo agrega al archivo
 	public void crearPasajero(String nombre, int dni, String ciudad, String domicilio, String usuario, String contrasenia)
 	{
 		Pasajero nuevo = new Pasajero (nombre, dni, ciudad, domicilio, usuario, contrasenia);
@@ -388,13 +425,13 @@ public class Administrador extends UserHotel implements Serializable {
 	
 	
 	
-	
+	//Recorre el archivo de pasajeros y lo borra segun su dni
 	public void borrarPasajero(int dni)
 	{
 		FileInputStream pasajero;
 		try
 		{
-			pasajero = new FileInputStream("Pasajero.dat");
+			pasajero = new FileInputStream("Pasajeros.dat");
 			ObjectInputStream lectura = new ObjectInputStream(pasajero);
 			Pasajero aux=(Pasajero)lectura.readObject();
 						
@@ -410,6 +447,78 @@ public class Administrador extends UserHotel implements Serializable {
 			
 			lectura.close();
 		}
+		
+		catch(NullPointerException ex)
+		{
+			System.out.println("El archivo esta vacio: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+		catch(ClassNotFoundException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+	}
+	
+	
+	
+	//Muestra un pasajero
+	
+	public void mostrarPasajero()
+	{
+		FileInputStream pasajero;
+		try
+		{
+			pasajero = new FileInputStream("Pasajeros.dat");
+			ObjectInputStream lectura = new ObjectInputStream(pasajero);
+			Pasajero aux=(Pasajero)lectura.readObject();
+			System.out.println("Nombre de pasajero: " + aux.getNombre());
+			System.out.println("DNI de pasajero: " + aux.getDNI());	
+			System.out.println("Domicilio de pasajero: "+ aux.getDomicilio());
+			lectura.close();
+			
+		}
+		
+		catch(NullPointerException ex)
+		{
+			System.out.println("El archivo esta vacio: "+ex);
+		}
+		catch(IOException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+		catch(ClassNotFoundException ex)
+		{
+			System.out.println("No se pudo leer el archivo: "+ex);
+		}
+	}
+	
+	
+	//Muestra todos los pasajeros del archivo
+	
+	public void mostrarPasajeros()
+	{
+		FileInputStream pasajero;
+		try
+		{
+			pasajero = new FileInputStream("Pasajeros.dat");
+			ObjectInputStream lectura = new ObjectInputStream(pasajero);
+			Pasajero aux=(Pasajero)lectura.readObject();
+				
+			
+			while(aux != null)
+			{
+				aux=(Pasajero)lectura.readObject();
+				System.out.println("Nombre de pasajero: " + aux.getNombre());
+				System.out.println("DNI de pasajero: " + aux.getDNI());	
+				System.out.println("Domicilio de pasajero: "+ aux.getDomicilio());
+			}
+			
+			lectura.close();
+		}
+		
 		
 		catch(NullPointerException ex)
 		{
