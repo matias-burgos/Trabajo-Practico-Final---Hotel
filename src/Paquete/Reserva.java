@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Reserva {
@@ -39,9 +40,9 @@ public class Reserva {
 	
 	
 	
-	public int BuscarHabitacion(int cantPasajeros, int periodo/*cambiar cuando tengamos metodo fecha*/, Pasajero responsable, int piso)//Busca habitaciones en base a los datos pedidos por los pasajeros.
+	public ArrayList BuscarHabitacion(int cantPasajeros, FEcha desde, FEcha hasta/*cambiar cuando tengamos metodo fecha*/, int piso)//Busca las habitaciones disponibles en base a los datos ingresados.
 	{	
-		int comprob=0;//Comprueba que se hayan encontrado habitaciones.
+		ArrayList<Habitacion>listaHabitaciones=new ArrayList<>();//Comprueba que se hayan encontrado habitaciones.
 		FileInputStream salida;
 		try {
 			salida=new FileInputStream("Habitacion.dat");
@@ -49,10 +50,13 @@ public class Reserva {
 			Habitacion aux=(Habitacion)lectura.readObject();
 			while(aux!=null)
 			{
-				if(aux.getMaxHabi()==cantPasajeros && aux.getPiso()==piso && aux.ocup.getPeriodo()==periodo)
+				if(aux.ocup==false && aux.reserv==false)
 				{
-					aux.MostrarHabitacion();
-					comprob=comprob++;
+					if(aux.getMaxHabi()==cantPasajeros && aux.getPiso()==piso && aux.ComprobacionPeriodo(desde, hasta)==true)//Comprueba si los datos ingresados concuerdan con la habitacion, si esta libre para ser reservada.
+					{
+						
+						listaHabitaciones.add(aux);
+					}
 				}
 				aux=(Habitacion)lectura.readObject();
 			}
@@ -61,20 +65,13 @@ public class Reserva {
 		} catch (Exception e) {
 			System.out.println("Error en la lectura del archivo: "+e);
 		}
-		finally
-		{
-			if(comprob==0)
-			{
-				System.out.println("No se han encontrado habitaciones");
-			}
-		}
-		return comprob;
+		return listaHabitaciones;
 	}
 	
 	
 	
 	
-	public void ReservarHabitacion()
+	public void ReservarHabitacion(Persona responsable, Habitacion seleccionada)
 	{
 		
 	}

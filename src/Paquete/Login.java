@@ -2,8 +2,9 @@ package Paquete;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 
-public class Login 
+public class Login implements Serializable
 {
 	/**
 	 * 

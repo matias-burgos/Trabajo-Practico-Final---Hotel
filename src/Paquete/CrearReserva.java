@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuItem;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -21,9 +23,12 @@ import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Dialog.ModalExclusionType;
 
-public class CrearReserva extends JFrame {
+public class CrearReserva extends JFrame implements Serializable{
 
 	private JPanel contentPane;
+	ArrayList<Habitacion>disponibles=new ArrayList<>();
+	static Persona responsableAsignado;
+	static String seleccionada=null; 
 	public CrearReserva() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -123,12 +128,18 @@ public class CrearReserva extends JFrame {
 		contentPane.add(añoB);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		Reserva nueva=new Reserva();
+		
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int pisoAux=Integer.parseInt(piso.getModel().toString());
 				FEcha desde=new FEcha(diaA.getSelectedIndex(), mesA.getSelectedIndex(), añoA.getSelectedIndex());
 				FEcha hasta=new FEcha(diaB.getSelectedIndex(), mesB.getSelectedIndex(), añoB.getSelectedIndex());
-				int cantAux=cantHabitantes.getSelectedIndex();
+				disponibles=nueva.BuscarHabitacion(cantHabitantes.getSelectedIndex(), desde, hasta, Integer.parseInt(piso.getModel().toString()));
+				if(disponibles.listIterator()!=null)
+				{
+					ListaHabitaciones nueva=new ListaHabitaciones(disponibles);
+					nueva.setVisible(true);
+				}
 				
 			}
 		});

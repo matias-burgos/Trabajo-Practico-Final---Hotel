@@ -23,6 +23,7 @@ public class Main {
 			ObjectOutputStream escrituraPasaj=new ObjectOutputStream(entradaPasajeros);
 			escrituraPasaj.writeObject(nuevoPasj);
 			escrituraPasaj.close();
+			
 		}
 		catch (FileNotFoundException e)
 		{

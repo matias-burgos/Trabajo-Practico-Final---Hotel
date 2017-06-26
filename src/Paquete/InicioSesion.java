@@ -73,15 +73,20 @@ public class InicioSesion extends JFrame {
 					JOptionPane.showMessageDialog(btnAceptar, "La combinacion de nombre y contraseña no existe", "Error al ingresar datos", JOptionPane.ERROR_MESSAGE);
 					break;
 				case 1:
-					break;
-				case 3:
+					MenuPasajero nuevoPasajero=new MenuPasajero();
+					nuevoPasajero.setVisible(true);
 					
-				default:
+					break;
+				case 0:
+					MenuConserje nuevoConserje=new MenuConserje();
+					nuevoConserje.setVisible(true);
+					
+					break;
+				case 2:
+					//MenuAdministrador nuevoAdmin=new MenuAdministrador();
 					break;
 				}
-				
-				
-				
+				dispose();
 				
 				
 			}
@@ -109,9 +114,5 @@ public class InicioSesion extends JFrame {
 		});
 		btnCrearCuenta.setBounds(306, 11, 128, 23);
 		contentPane.add(btnCrearCuenta);
-		
-		JLabel lblTipoDeUsuario = new JLabel("Tipo de usuario");
-		lblTipoDeUsuario.setBounds(75, 76, 89, 14);
-		contentPane.add(lblTipoDeUsuario);
 	}
 }

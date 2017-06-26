@@ -22,26 +22,6 @@ import javax.swing.SwingConstants;
 public class MenuPasajero extends JFrame implements Serializable{
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPasajero frame = new MenuPasajero();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public MenuPasajero() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -51,8 +31,11 @@ public class MenuPasajero extends JFrame implements Serializable{
 		contentPane.setLayout(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		JButton btnNewButton = new JButton("Realizar reserva");
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				CrearReserva nuevo=new CrearReserva();
+				nuevo.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(250, 31, 124, 23);
