@@ -57,20 +57,20 @@ public class CrearReserva extends JFrame {
 		lblPeriodoDeOcupacion.setBounds(10, 113, 124, 14);
 		contentPane.add(lblPeriodoDeOcupacion);
 		
-		JComboBox spinner_1 = new JComboBox();
-		spinner_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		spinner_1.setBounds(10, 156, 37, 20);
-		contentPane.add(spinner_1);
+		JComboBox diaA = new JComboBox();
+		diaA.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		diaA.setBounds(10, 156, 37, 20);
+		contentPane.add(diaA);
 		
-		JComboBox spinner_2 = new JComboBox();
-		spinner_2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-		spinner_2.setBounds(57, 156, 37, 20);
-		contentPane.add(spinner_2);
+		JComboBox mesA = new JComboBox();
+		mesA.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
+		mesA.setBounds(57, 156, 37, 20);
+		contentPane.add(mesA);
 		
-		JComboBox spinner_3 = new JComboBox();
-		spinner_3.setModel(new DefaultComboBoxModel(new String[] {"2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
-		spinner_3.setBounds(104, 156, 60, 20);
-		contentPane.add(spinner_3);
+		JComboBox añoA = new JComboBox();
+		añoA.setModel(new DefaultComboBoxModel(new String[] {"2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
+		añoA.setBounds(104, 156, 60, 20);
+		contentPane.add(añoA);
 		
 		JLabel label = new JLabel("-");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -101,40 +101,38 @@ public class CrearReserva extends JFrame {
 		lblCantidadDeHabitantes.setBounds(10, 187, 124, 14);
 		contentPane.add(lblCantidadDeHabitantes);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		comboBox.setToolTipText("");
-		comboBox.setBounds(10, 212, 84, 23);
-		contentPane.add(comboBox);
+		JComboBox cantHabitantes = new JComboBox();
+		cantHabitantes.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		cantHabitantes.setToolTipText("");
+		cantHabitantes.setBounds(10, 212, 84, 23);
+		contentPane.add(cantHabitantes);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		comboBox_1.setBounds(185, 156, 37, 20);
-		contentPane.add(comboBox_1);
+		JComboBox diaB = new JComboBox();
+		diaB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		diaB.setBounds(185, 156, 37, 20);
+		contentPane.add(diaB);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12"}));
-		comboBox_2.setBounds(232, 156, 37, 20);
-		contentPane.add(comboBox_2);
+		JComboBox mesB = new JComboBox();
+		mesB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12"}));
+		mesB.setBounds(232, 156, 37, 20);
+		contentPane.add(mesB);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
-		comboBox_3.setBounds(279, 156, 60, 20);
-		contentPane.add(comboBox_3);
+		JComboBox añoB = new JComboBox();
+		añoB.setModel(new DefaultComboBoxModel(new String[] {"2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
+		añoB.setBounds(279, 156, 60, 20);
+		contentPane.add(añoB);
 		
 		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(335, 212, 89, 23);
-		contentPane.add(btnAceptar);
-		
-		JButton btnVerHabitacionesDisponibles = new JButton("Ver habitaciones disponibles");
-		btnVerHabitacionesDisponibles.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int pisoSelect=Integer.parseInt(piso.getSelectItem());
-				
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int pisoAux=Integer.parseInt(piso.getModel().toString());
+				FEcha desde=new FEcha(diaA.getSelectedIndex(), mesA.getSelectedIndex(), añoA.getSelectedIndex());
+				FEcha hasta=new FEcha(diaB.getSelectedIndex(), mesB.getSelectedIndex(), añoB.getSelectedIndex());
+				int cantAux=cantHabitantes.getSelectedIndex();
 				
 			}
 		});
-		btnVerHabitacionesDisponibles.setBounds(232, 7, 101, 32);
-		contentPane.add(btnVerHabitacionesDisponibles);
+		btnAceptar.setBounds(335, 212, 89, 23);
+		contentPane.add(btnAceptar);
 	}
 }
