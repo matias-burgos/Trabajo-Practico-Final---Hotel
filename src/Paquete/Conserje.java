@@ -1,4 +1,6 @@
 package Paquete;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 public class Conserje extends UserHotel  implements Serializable
@@ -46,4 +48,6 @@ public class Conserje extends UserHotel  implements Serializable
 		{
 			
 		}
+		
+		
 }	

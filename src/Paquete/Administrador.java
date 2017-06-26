@@ -1,7 +1,8 @@
 /*
  * Administrador: Es el encargado de las funciones administrativas del sistema.
- *  Dentro de sus funciones est· la realizaciÛn de back ups de la informaciÛn, 
- *  la creaciÛn de otros usuarios, la asignaciÛn de permisos a usuarios, etc.
+
+ *  Dentro de sus funciones est√° la realizaci√≥n de back ups de la informaci√≥n, 
+ *  la creaci√≥n de otros usuarios, la asignaci√≥n de permisos a usuarios, etc.
  * 
  * */
  
@@ -10,7 +11,7 @@ package Paquete;
 
 import java.util.Scanner;
 
-
+import javax.swing.JOptionPane;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,41 +44,7 @@ public class Administrador extends UserHotel implements Serializable {
 	}
 	
 	
-	
-	// Aumenta el nivel de permisos del conserje. Si ya tiene el maximo tira un mensaje
-	/*public void aumentarPermisos(Conserje conserje)
-	{
-		if(conserje.getPermisos()==3)
-		{
-			System.out.println("El conserje ya tiene el nivel maximo de permisos");
-		}
-		else
-		{
-			int aux = conserje.getPermisos();
-			conserje.setPermisos(aux+1);
-			System.out.println("Permisos aumentados");
-		}
-	}
-	
-	// Quita un nivel de permisos al conserje. Si ya tiene el nivel minimo, da un mensaje
-	public void quitarPermisos(Conserje conserje)
-	{
-		if(conserje.getPermisos()==1)
-		{
-			System.out.println("El conserje ya tiene el nivel minimo de permisos");
-		}
-		else
-		{
-			int aux = conserje.getPermisos();
-			conserje.setPermisos(aux-1);
-			System.out.println("Permisos quitados");
-		}
-	}*/
-	
-	
-	//	FUNCIONES DE EMPLEADO
-	
-	
+
 	//Recorre el archivo de empleados (conserje) y retorna la cantidad.
 	public int cantidadEmpleados() 
 	{
@@ -187,6 +154,46 @@ public class Administrador extends UserHotel implements Serializable {
 	}
 	
 	
+
+	
+	
+	
+	
+	/*
+	//Pide al usuario los datos necesarios para crear un objeto de tipo conserje
+	public Conserje crearConserje()
+	{
+		
+		
+		Scanner sc = new Scanner(System.in);
+		String n;//nombre
+		int d;//dni
+		String u;//usuario
+		String c;//contrase√±a
+		String id;//ID de empleado
+		
+		System.out.println("Nombre: ");
+		n = sc.nextLine();
+		
+		System.out.println("DNI: ");
+		d = sc.nextInt();
+		
+		System.out.println("Usuario: ");
+		u = sc.nextLine();
+		
+		System.out.println("Contrase√±a: ");
+		c = sc.nextLine();
+		
+		System.out.println("ID de empleado: ");
+		id= sc.nextLine();
+		
+		Conserje conserje = new Conserje(n, d, u, c, id);
+		
+		sc.close();
+		
+		return conserje;
+	}
+	*/
 	
 	//Crea y a su vez agrega un empleado al archivo de empleados.
 	public void crearEmpleado(String nombre,int dni, String usuario, String pass, String id)
@@ -533,7 +540,7 @@ public class Administrador extends UserHotel implements Serializable {
 			System.out.println("No se pudo leer el archivo: "+ex);
 		}
 	}
-	
+
 	
 	
 	//Ejemplo.

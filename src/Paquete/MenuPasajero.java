@@ -51,6 +51,10 @@ public class MenuPasajero extends JFrame implements Serializable{
 		contentPane.setLayout(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		JButton btnNewButton = new JButton("Realizar reserva");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton.setBounds(250, 31, 124, 23);
 		contentPane.add(btnNewButton);
 		

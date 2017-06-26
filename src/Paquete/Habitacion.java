@@ -11,13 +11,13 @@ public class Habitacion implements Serializable {
 		int piso;//Piso de habitacion.
 		int cantMax;//Cantidad maxima de pasajeros.
 		
-		Ocupacion ocup;//Atributo que designa la ocupacion de la habitacion.
-		Reserva reserv;//Atrivuto que designa la reserva de la habitacion.
+		boolean ocup;//Atributo que designa la ocupacion de la habitacion.
+		boolean reserv;//Atrivuto que designa la reserva de la habitacion.
 		
 		public Habitacion()//Inicializacion.
 		{
-			ocup=new Ocupacion();
-			reserv=new Reserva();
+			ocup=false;
+			reserv=false;
 			numero=0;
 			piso=0;
 			cantMax=0;
@@ -31,12 +31,20 @@ public class Habitacion implements Serializable {
 			this.cantMax=cantMax;
 		}
 		
-		
+		/*
 		public void asignarHabitacion(Pasajero responsable, ArrayList<Pasajero> pasajeros, int periodo)//Llama a la funcion de Ocupacion para ocupar la habitacion.
 		{
 			ocup.asignarHabitacion(responsable, pasajeros, periodo);
 		}
-		
+		*/
+		public void reservar()
+		{
+			reserv=true;
+		}
+		public void ocupar()
+		{
+			ocup=true;
+		}
 		
 		
 		public int getNumero()

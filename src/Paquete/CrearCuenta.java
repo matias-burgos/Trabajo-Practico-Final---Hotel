@@ -1,177 +1,158 @@
 package Paquete;
 
-import java.io.Serializable;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JSpinner;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JPasswordField;
+import java.awt.Color;
 
-public class CrearCuenta extends JPanel implements Serializable{
-	private JLabel lblCrearCuenta;
-	private JTextField txtApellido_1;
-	private JTextField txtApellido;
-	private JTextField textField;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+import javax.swing.ButtonGroup;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
 
-	/**
-	 * Create the panel.
-	 */
+public class CrearCuenta extends JDialog {
+
+	private final JPanel contentPanel = new JPanel();
+	private JTextField nombre;
+	private JTextField apellido;
+	private JTextField dni;
+	private JTextField nombreUsuario;
+	private JPasswordField contraseña;
+	ButtonGroup grupo1 = new ButtonGroup();
+	
 	public CrearCuenta() {
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(Color.BLACK);
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		
-		JLabel lblSawuel = new JLabel("Hotel Sawuel");
+		JLabel lblIngreseLaInformacion = new JLabel("Ingrese la informacion requerida");
+		lblIngreseLaInformacion.setForeground(Color.GREEN);
+		lblIngreseLaInformacion.setBackground(Color.WHITE);
+		lblIngreseLaInformacion.setBounds(131, 5, 193, 14);
 		
-		lblCrearCuenta = new JLabel("Crear Cuenta");
-		lblCrearCuenta.setHorizontalAlignment(SwingConstants.CENTER);
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnVolver.setBackground(Color.RED);
+		btnVolver.setBounds(345, 5, 89, 23);
+		btnVolver.setForeground(Color.BLACK);
+		
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombreAux=nombre.getText();
+				String apellidoAux=apellido.getText();
+				int dniAux=Integer.parseInt(dni.getText());
+				String contraseñaAux=contraseña.getText();
+				String usuarioAux=nombreUsuario.getText();
+				Conserje nuevo=new Conserje();
+				//nuevo.crearUsuario(nombreAux, apellidoAux, dniAux, contraseñaAux, usuarioAux);
+				//nuevo.AgregarUsuario();
+				
+			}
+		});
+		btnAceptar.setBackground(Color.GREEN);
+		btnAceptar.setBounds(345, 239, 89, 23);
 		
 		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setForeground(Color.WHITE);
+		lblNombre.setBackground(Color.WHITE);
+		lblNombre.setBounds(10, 46, 57, 14);
+		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		txtApellido_1 = new JTextField();
-		txtApellido_1.setText("Nombre");
-		txtApellido_1.setColumns(10);
+		nombre = new JTextField();
+		nombre.setBounds(10, 71, 86, 20);
+		nombre.setColumns(10);
 		
-		txtApellido = new JTextField();
-		txtApellido.setText("Apellido");
-		txtApellido.setColumns(10);
+		JLabel lblApellido = new JLabel("Apellido");
+		lblApellido.setForeground(Color.WHITE);
+		lblApellido.setBounds(112, 46, 66, 14);
+		lblApellido.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario");
+		apellido = new JTextField();
+		apellido.setBounds(106, 71, 86, 20);
+		apellido.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		JLabel lblNewLabel = new JLabel("DNI");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(10, 115, 46, 14);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		dni = new JTextField();
+		dni.setBounds(10, 140, 86, 20);
+		dni.setColumns(10);
+		
+		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario ");
+		lblNombreDeUsuario.setForeground(Color.WHITE);
+		lblNombreDeUsuario.setBounds(10, 175, 110, 14);
+		
+		nombreUsuario = new JTextField();
+		nombreUsuario.setBounds(10, 200, 100, 20);
+		nombreUsuario.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
+		lblContrasea.setForeground(Color.WHITE);
+		lblContrasea.setBounds(131, 175, 100, 14);
 		
-		passwordField = new JPasswordField();
+		contraseña = new JPasswordField();
+		contraseña.setBounds(121, 200, 110, 20);
 		
-		JLabel lblRepetirContrasea = new JLabel("Repetir contrase\u00F1a");
+		JLabel label = new JLabel("-");
+		label.setForeground(Color.WHITE);
+		label.setBounds(103, 203, 26, 14);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		passwordField_1 = new JPasswordField();
+		JLabel label_1 = new JLabel("-");
+		label_1.setForeground(Color.WHITE);
+		label_1.setBounds(87, 74, 31, 14);
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPanel.setLayout(null);
+		contentPanel.add(lblIngreseLaInformacion);
+		contentPanel.add(btnVolver);
+		contentPanel.add(btnAceptar);
+		contentPanel.add(lblNombre);
+		contentPanel.add(nombre);
+		contentPanel.add(lblApellido);
+		contentPanel.add(apellido);
+		contentPanel.add(lblNewLabel);
+		contentPanel.add(dni);
+		contentPanel.add(lblNombreDeUsuario);
+		contentPanel.add(nombreUsuario);
+		contentPanel.add(lblContrasea);
+		contentPanel.add(contraseña);
+		contentPanel.add(label);
+		contentPanel.add(label_1);
 		
-		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento");
-		
-		JSpinner spinner = new JSpinner();
-		
-		JSpinner spinner_1 = new JSpinner();
-		
-		JSpinner spinner_2 = new JSpinner();
-		
-		JLabel label = new JLabel("/");
-		
-		JLabel label_1 = new JLabel("/");
-		
-		JButton btnNewButton_1 = new JButton("Iniciar Sesion");
-		
-		JLabel lblAgregarCosasSobre = new JLabel("Agregar cosas sobre la cuenta, el hotel, esas cosas");
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(396)
-					.addComponent(lblNombre))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(386)
-					.addComponent(lblNombreDeUsuario))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(384)
-					.addComponent(lblFechaDeNacimiento))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(364)
-					.addComponent(spinner, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-					.addGap(4)
-					.addComponent(label)
-					.addGap(4)
-					.addComponent(spinner_1, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addGap(4)
-					.addComponent(label_1)
-					.addGap(7)
-					.addComponent(spinner_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(415)
-					.addComponent(lblContrasea, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(364)
-					.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(385)
-					.addComponent(lblRepetirContrasea))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(364)
-					.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblSawuel)
-					.addGap(292)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(txtApellido_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblAgregarCosasSobre)
-									.addGap(414)
-									.addComponent(txtApellido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(503)
-									.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))))
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblCrearCuenta, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton_1)
-						.addComponent(lblSawuel))
-					.addGap(8)
-					.addComponent(lblCrearCuenta)
-					.addGap(38)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNombre)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(6)
-									.addComponent(txtApellido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtApellido_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-						.addComponent(lblAgregarCosasSobre))
-					.addGap(6)
-					.addComponent(lblNombreDeUsuario)
-					.addGap(6)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(lblFechaDeNacimiento)
-					.addGap(6)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(label))
-						.addComponent(spinner_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(label_1))
-						.addComponent(spinner_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(20)
-					.addComponent(lblContrasea)
-					.addGap(6)
-					.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(lblRepetirContrasea)
-					.addGap(6)
-					.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-		);
-		setLayout(groupLayout);
-
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Administrador");
+		rdbtnNewRadioButton.setBounds(295, 70, 109, 23);
+		contentPanel.add(rdbtnNewRadioButton);
+		grupo1.add(rdbtnNewRadioButton);
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Conserje");
+		rdbtnNewRadioButton_1.setBounds(295, 111, 109, 23);
+		contentPanel.add(rdbtnNewRadioButton_1);
+		grupo1.add(rdbtnNewRadioButton_1);
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Pasajero");
+		rdbtnNewRadioButton_2.setBounds(295, 153, 109, 23);
+		contentPanel.add(rdbtnNewRadioButton_2);
+		grupo1.add(rdbtnNewRadioButton_2);
+		JLabel lblElegirTipoDe = new JLabel("Elegir tipo de cuenta");
+		lblElegirTipoDe.setForeground(Color.WHITE);
+		lblElegirTipoDe.setBounds(287, 46, 137, 14);
+		contentPanel.add(lblElegirTipoDe);
 	}
 }
