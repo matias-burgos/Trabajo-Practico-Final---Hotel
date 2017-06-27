@@ -5,8 +5,9 @@ import java.util.ArrayList;
 
 public class Ocupacion implements Serializable {
 
-	boolean ocupada;//Si la habitacion se encuentra ocupada (true) o disponible (false)
-	int periodoOcupacion;//Es el periodo por el que la habitacion esta ocupada.
+	//Es el periodo por el que la habitacion esta ocupada.
+	FEcha desde;
+	FEcha hasta;
 	Extras cargosExtras;//Cargos extras pedidos por los habitantes de la habitacion.
 	Persona responsable;//Persona que alquila la habitacion.
 	ArrayList<Pasajero>listaHabitantes=new ArrayList<>();//Lista de personas en la habitacion.
@@ -15,19 +16,19 @@ public class Ocupacion implements Serializable {
 	
 	public Ocupacion()//Inicializacion.
 	{
-		ocupada=false;
-		periodoOcupacion=0;
+		desde=new FEcha();
+		hasta=new FEcha();
 		cargosExtras=new Extras();
 		responsable=new Pasajero();
 		comprob=0;
 	}
 	
-	public void asignarHabitacion(Pasajero responsable, ArrayList<Pasajero> pasajeros, int periodo)//Asigna y ocupa una habitacion.
+	public Ocupacion(Persona responsable, ArrayList<Pasajero> pasajeros, FEcha desde, FEcha hasta)//Asigna y ocupa una habitacion.
 	{
 		this.responsable=responsable;
-		periodoOcupacion=periodo;
+		this.desde=desde;
+		this.hasta=hasta;
 		listaHabitantes=pasajeros;
-		ocupada=true;
 	}
 	//Metodo para extras.
 
@@ -65,18 +66,19 @@ public class Ocupacion implements Serializable {
 	{
 		return listaHabitantes;
 	}
-	public int getPeriodo()
+	public FEcha getDesde()
 	{
-		return periodoOcupacion;
+		return desde;
+	}
+	public FEcha getHasta()
+	{
+		return hasta;
 	}
 	public Persona getResponsable()//Muestra la informacion del pasajeros que alquila la habitacion.
 	{
 		return responsable;
 	}
-	public boolean getOcupada()
-	{
-		return ocupada;
-	}
+	
 	
 	
 	

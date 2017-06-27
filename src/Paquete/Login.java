@@ -3,6 +3,7 @@ package Paquete;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Login implements Serializable
@@ -28,12 +29,12 @@ public class Login implements Serializable
 			for(Conserje aux:auxLista)//Recorrido del archivo
 			{
 				//Comprobacion.
-				if(nombre.equals(auxConserje.getUser()) && contraseña.equals(auxConserje.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
+				if(nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
 				{
 					rta=0;
 					
 				}
-				auxConserje=(Conserje)lecturaConserje.readObject();
+				
 			}
 			lecturaConserje.close();
 		} catch (Exception e2) {
@@ -48,12 +49,12 @@ public class Login implements Serializable
 			try {
 				salidaPasajero=new FileInputStream("Pasajeros.dat");
 				ObjectInputStream lecturaPasajero=new ObjectInputStream(salidaPasajero); 
-				auxPasajero=(Pasajero)lecturaPasajero.readObject();
+				ArrayList<Pasajero>auxLista=(ArrayList<Pasajero>)lecturaPasajero.readObject();
 				//Recorrido por el archivo de usuarios.
-				while(auxPasajero!=null)//Recorrido del archivo
+				for(Pasajero aux:auxLista)//Recorrido del archivo
 				{
 					//Comprobacion.
-					if(nombre.equals(auxPasajero.getUser()) && contraseña.equals(auxPasajero.getContrasenha()))
+					if(nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha()))
 					{
 						rta=1;
 						
@@ -61,7 +62,7 @@ public class Login implements Serializable
 					}
 					
 					
-					auxPasajero=(Pasajero)lecturaPasajero.readObject();
+				
 				}
 				lecturaPasajero.close();
 			} catch (Exception e2) {
@@ -74,20 +75,20 @@ public class Login implements Serializable
 			
 			FileInputStream salidaAdministrador;
 			try {
-				salidaAdministrador=new FileInputStream("Administrador.dat");
+				salidaAdministrador=new FileInputStream("Administradores.dat");
 				ObjectInputStream lecturaAdministrador=new ObjectInputStream(salidaAdministrador);
-				Administrador auxAdministrador=(Administrador)lecturaAdministrador.readObject();
+				ArrayList<Administrador>auxLista=(ArrayList<Administrador>)lecturaAdministrador.readObject();
 				//Recorrido del archivo de administrador.
-				while(auxAdministrador!=null)//Recorrido del archivo
+				for(Administrador aux:auxLista)//Recorrido del archivo
 				{
 						//Comprobacion.
-						if(nombre.equals(auxAdministrador.getUser()) && contraseña.equals(auxAdministrador.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
+						if(nombre.equals(aux.getUser()) && contraseña.equals(aux.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
 						{
 							rta=2;
 							
 							
 						}
-						auxAdministrador=(Administrador)lecturaAdministrador.readObject();
+						
 					}
 					lecturaAdministrador.close();
 			} catch (Exception e2) {

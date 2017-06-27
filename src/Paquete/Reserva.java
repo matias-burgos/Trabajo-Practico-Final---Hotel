@@ -89,7 +89,15 @@ public class Reserva implements Serializable{
 	{
 		return hasta;
 	}
-	
+	public boolean ComprobarResponsable(String nombre, int dni)//Se realiza una comprobacion del responsable de la reserva con el pasado por parametros.
+	{
+		boolean comprob=false;//Comprueba que concuerde el responsable con el mandado por aprametros
+		if(nombre.equals(responsable.getNombre())&& dni==responsable.getDNI())
+		{
+			comprob=true;
+		}
+		return comprob;
+	}
 
 	
 	public Habitacion getReservado()//Retorna la habitacion reservada.

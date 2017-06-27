@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Principal implements Serializable
 {
 	public boolean ComprobacionPeriodo( FEcha desde, FEcha hasta, Habitacion habitacion)//Devuelve true si el periodo que se indica es valido para su reserva, si retorna false la habitacion esta ocupada/reservada en algun momento del periodo.
@@ -238,5 +240,90 @@ public class Principal implements Serializable
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList BusquedaReserva(String nombre, int dni)//Encuentra la reserva realizada mediante el responsable de la misma.
+	{
+		ArrayList<Reserva>listaEncontrada=new ArrayList<>();
+		boolean comprob=false;//Comprueba si se encuentra la reserva hecha por el responsable ingresado.}
+		FileInputStream salida;
+		try {
+			salida=new FileInputStream("Reservas.dat");
+			ObjectInputStream lectura=new ObjectInputStream(salida);
+			ArrayList<Reserva>listReserva=(ArrayList<Reserva>)lectura.readObject();
+			for(Reserva aux:listReserva)
+			{
+				comprob=aux.ComprobarResponsable(nombre, dni);
+				listaEncontrada.add(aux);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return listaEncontrada;
+	}
+	public void Ocupar(int numero, ArrayList<Pasajero>listaPasajeros)//Realiza la ocupacion.
+	{
+		
+		FileInputStream salida;
+		try {
+			salida=new FileInputStream("Habitaciones.dat");
+			ObjectInputStream lectura=new ObjectInputStream(salida);
+			ArrayList<Habitacion>listaReserva=(ArrayList<Habitacion>)lectura.readObject();
+			for(Habitacion aux:listaReserva)
+			{
+				if(aux.getNumero()==numero)
+				{
+					ReservaAOcupar(aux, listaPasajeros);
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	//Realiza la ocupacion de la habitacion, buscando y eliminando la reserva realizada, creando una ocupacion nueva.
+	public void ReservaAOcupar(Habitacion seleccionada, ArrayList<Pasajero>listaPasajeros)
+	{
+		ArrayList<Ocupacion>listaOcup=new ArrayList<>();
+		boolean comprob=false;//Comprueba si se encuentra la reserva en el archivo.
+		FileInputStream salida;
+		FileOutputStream entrada;
+		FileOutputStream entradaOcupacion;
+		try {
+			//Busqueda de la reserva la lista y eliminacion del arreglo.
+			salida=new FileInputStream("Reservas.dat");
+			ObjectInputStream lectura=new ObjectInputStream(salida);
+			ArrayList<Reserva>listaAux=(ArrayList<Reserva>)lectura.readObject();
+			for(Reserva aux:listaAux)
+			{
+				if(aux.getReservado().numero==seleccionada.getNumero())
+				{
+					//Creacion de la nueva ocupacion.
+					Ocupacion nueva=new Ocupacion(aux.getResponsable(), listaPasajeros, aux.getDesde(), aux.getHasta());
+					listaOcup.add(nueva);
+					listaAux.remove(aux);
+					comprob=true;
+				}
+			}
+			lectura.close();
+			if(comprob==true)
+			{
+				//Guadado del nuevo arreglo sin la reserva en el archivo.
+				entrada=new FileOutputStream("Reservas.dat");
+				ObjectOutputStream escritura=new ObjectOutputStream(entrada);
+				escritura.writeObject(listaAux);
+				escritura.close();
+				//Guardado de la nueva ocupacion en el archivo de ocupacion.
+				entradaOcupacion=new FileOutputStream ("Ocupacion.dat");
+				ObjectOutputStream escrituraOcupacion=new ObjectOutputStream(entradaOcupacion);
+				escrituraOcupacion.writeObject(listaOcup);
+				escrituraOcupacion.close();
+				
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 }

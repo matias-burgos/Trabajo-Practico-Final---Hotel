@@ -65,6 +65,17 @@ public class MenuAdministrador extends JFrame {
 		JButton btnCrearConserjes = new JButton("Crear conserje");
 		btnCrearConserjes.setBounds(166, 135, 127, 23);
 		contentPane.add(btnCrearConserjes);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				InicioSesion volver=new InicioSesion();
+				volver.setVisible(true);
+			}
+		});
+		btnSalir.setBounds(324, 228, 89, 23);
+		contentPane.add(btnSalir);
 	}
 
 }
