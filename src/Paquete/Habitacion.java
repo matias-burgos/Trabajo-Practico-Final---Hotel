@@ -10,8 +10,7 @@ public class Habitacion implements Serializable {
 		int numero;//Numero de habitacion.
 		int piso;//Piso de habitacion.
 		int cantMax;//Cantidad maxima de pasajeros.
-		FEcha desde;
-		FEcha hasta;
+		
 		boolean ocup;//Atributo que designa la ocupacion de la habitacion.
 		boolean reserv;//Atrivuto que designa la reserva de la habitacion.
 		
@@ -54,22 +53,6 @@ public class Habitacion implements Serializable {
 		{
 			ocup=true;
 		}
-		public void setDesde(FEcha desde)
-		{
-			this.desde=desde;
-		}
-		public FEcha getDesde()
-		{
-			return desde;
-		}
-		public void setHasta(FEcha hasta)
-		{
-			this.hasta=hasta;
-		}
-		public FEcha getHasta()
-		{
-			return hasta;
-		}
 		
 		public int getNumero()
 		{
@@ -83,28 +66,5 @@ public class Habitacion implements Serializable {
 		{
 			return cantMax;
 		}
-		
-		public void MostrarHabitacion()//Muestra todos los datos de la habitacion.
-		{
-			System.out.println("Numero de habitacion: "+getNumero());
-			System.out.println("Piso de la habitacion: "+getPiso());
-			System.out.println("Cantidad maxima de habitantes de la habitacion: "+getMaxHabi());
-			if(ocup==true)
-			{
 				
-			}
-		
-			
-			
-		}
-		public boolean ComprobacionPeriodo( FEcha desde, FEcha hasta)//Devuelve true si el periodo que se indica es valido para su reserva, si retorna false la habitacion esta ocupada/reservada en algun momento del periodo.
-		{
-			boolean rta=false;
-			if((desde.año<=desde.año && desde.año>desde.año) && !(desde.año<desde.año && desde.año<hasta.año))
-			{
-				
-			}
-			return rta;
-		}
-		
 }

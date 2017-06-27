@@ -22,8 +22,9 @@ import javax.swing.DefaultListModel;
 public class ListaHabitaciones extends JFrame {
 
 	private JPanel contentPane;
-	
-	public ListaHabitaciones(ArrayList<Habitacion>disponibles) {
+	int seleccionada;
+	public ListaHabitaciones(ArrayList<Habitacion>disponibles, FEcha desde, FEcha hasta)
+	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -52,14 +53,14 @@ public class ListaHabitaciones extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 					
-					if(seleccionada!=null)
+					if(seleccionada==0)
 					{
-						seleccionada=list.getSelectedValue().toString();
+						seleccionada=Integer.parseInt(list.getSelectedValue().toString());
 						JOptionPane.showMessageDialog(btnAceptar, "Debe seleccionar algun hotel");
 						
 					}
 					else{
-						InfoPersona nuevo=new InfoPersona();
+						InfoPersona nuevo=new InfoPersona(seleccionada, desde, hasta);
 						nuevo.setVisible(true);
 						dispose();
 					}

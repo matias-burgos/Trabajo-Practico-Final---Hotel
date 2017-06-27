@@ -60,9 +60,8 @@ public class CrearCuenta extends JDialog {
 				int dniAux=Integer.parseInt(dni.getText());
 				String contraseñaAux=contraseña.getText();
 				String usuarioAux=nombreUsuario.getText();
-				Conserje nuevo=new Conserje();
-				//nuevo.crearUsuario(nombreAux, apellidoAux, dniAux, contraseñaAux, usuarioAux);
-				//nuevo.AgregarUsuario();
+				nuevo.crearUsuario(nombreAux, apellidoAux, dniAux, contraseñaAux, usuarioAux);
+				nuevo.AgregarUsuario();
 				
 			}
 		});

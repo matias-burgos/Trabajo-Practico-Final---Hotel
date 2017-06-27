@@ -8,7 +8,7 @@ public class Ocupacion implements Serializable {
 	boolean ocupada;//Si la habitacion se encuentra ocupada (true) o disponible (false)
 	int periodoOcupacion;//Es el periodo por el que la habitacion esta ocupada.
 	Extras cargosExtras;//Cargos extras pedidos por los habitantes de la habitacion.
-	Pasajero responsable;//Persona que alquila la habitacion.
+	Persona responsable;//Persona que alquila la habitacion.
 	ArrayList<Pasajero>listaHabitantes=new ArrayList<>();//Lista de personas en la habitacion.
 	int comprob;//Atributo que comprueba si se ha realizado algun pedido, y los suma.
 	
@@ -61,50 +61,23 @@ public class Ocupacion implements Serializable {
 	}
 	
 	// Gets-Sets.
-	public void getHabitantes()
+	public ArrayList getHabitantes()
 	{
-		int i=1;//Utilizado para contar cantidad de personas y para muestreo.
-		for(Pasajero aux:listaHabitantes)
-		{
-			System.out.println("------------------------------------------ Habitante "+i+"------------------------------------------");
-			aux.MostrarPasajero();
-			i++;
-		}
+		return listaHabitantes;
 	}
 	public int getPeriodo()
 	{
 		return periodoOcupacion;
 	}
-	public void getResponsable()//Muestra la informacion del pasajeros que alquila la habitacion.
+	public Persona getResponsable()//Muestra la informacion del pasajeros que alquila la habitacion.
 	{
-		responsable.MostrarPasajero();
+		return responsable;
 	}
 	public boolean getOcupada()
 	{
 		return ocupada;
 	}
 	
-	
-	public void MuestreoOcupantes()
-	{
-	
-		System.out.println("La habitacion se encuentra ocupada ");
-		System.out.println("Responsable de la habitacion:");
-		getResponsable();
-		System.out.println("Lista de Habitantes de la habitacion:");
-		getHabitantes();
-		System.out.println("Periodo de ocupacion: "+getPeriodo());
-		System.out.println("Cargos extras: ");
-		if(comprob>0)
-		{
-			cargosExtras.MostrarExtras();
-			System.out.println("Cuenta total a pagar por cargos extras: $"+cargosExtras.TotalExtras());
-		}
-		else{
-			System.out.println("No se ha realizado ningun pedido");
-		}
-		
-	}
 	
 	
 	

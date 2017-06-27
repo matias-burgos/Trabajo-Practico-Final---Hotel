@@ -26,7 +26,7 @@ public class InicioSesion extends JFrame {
 	//Siendo static puedo tener acceso a estas variables en cualquier lugar del proyecto.
 	public static JPasswordField contraseñaUsuario;
 	public static JTextField nombreUsuario;
-
+	
 	public InicioSesion() {
 		setTitle("Hotel Sawuel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,17 +73,18 @@ public class InicioSesion extends JFrame {
 					JOptionPane.showMessageDialog(btnAceptar, "La combinacion de nombre y contraseña no existe", "Error al ingresar datos", JOptionPane.ERROR_MESSAGE);
 					break;
 				case 1:
-					MenuPasajero nuevoPasajero=new MenuPasajero();
+					MenuPasajero nuevoPasajero=new MenuPasajero(nombreUsuario.getText());
 					nuevoPasajero.setVisible(true);
 					
 					break;
 				case 0:
-					MenuConserje nuevoConserje=new MenuConserje();
+					MenuConserje nuevoConserje=new MenuConserje(nombreUsuario.getText());
 					nuevoConserje.setVisible(true);
 					
 					break;
 				case 2:
-					//MenuAdministrador nuevoAdmin=new MenuAdministrador();
+					MenuAdministrador nuevoAdmin=new MenuAdministrador(nombreUsuario.getText());
+					nuevoAdmin.setVisible(true);
 					break;
 				}
 				dispose();

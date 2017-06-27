@@ -27,8 +27,6 @@ public class CrearReserva extends JFrame implements Serializable{
 
 	private JPanel contentPane;
 	ArrayList<Habitacion>disponibles=new ArrayList<>();
-	static Persona responsableAsignado;
-	static String seleccionada=null; 
 	public CrearReserva() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -53,10 +51,6 @@ public class CrearReserva extends JFrame implements Serializable{
 		JLabel lblPiso = new JLabel("Piso");
 		lblPiso.setBounds(10, 57, 60, 14);
 		contentPane.add(lblPiso);
-		
-		JSpinner piso = new JSpinner();
-		piso.setBounds(10, 82, 60, 20);
-		contentPane.add(piso);
 		
 		JLabel lblPeriodoDeOcupacion = new JLabel("Periodo de ocupacion");
 		lblPeriodoDeOcupacion.setBounds(10, 113, 124, 14);
@@ -130,20 +124,28 @@ public class CrearReserva extends JFrame implements Serializable{
 		JButton btnAceptar = new JButton("Aceptar");
 		Reserva nueva=new Reserva();
 		
+		JComboBox piso = new JComboBox();
+		piso.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
+		piso.setBounds(10, 82, 100, 20);
+		contentPane.add(piso);
+		
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FEcha desde=new FEcha(diaA.getSelectedIndex(), mesA.getSelectedIndex(), añoA.getSelectedIndex());
 				FEcha hasta=new FEcha(diaB.getSelectedIndex(), mesB.getSelectedIndex(), añoB.getSelectedIndex());
-				disponibles=nueva.BuscarHabitacion(cantHabitantes.getSelectedIndex(), desde, hasta, Integer.parseInt(piso.getModel().toString()));
+				disponibles=nueva.BuscarHabitacion(cantHabitantes.getSelectedIndex(), desde, hasta, Integer.parseInt(piso.getSelectedItem().toString()));
 				if(disponibles.listIterator()!=null)
 				{
-					ListaHabitaciones nueva=new ListaHabitaciones(disponibles);
+					ListaHabitaciones nueva=new ListaHabitaciones(disponibles, desde, hasta);
 					nueva.setVisible(true);
+					dispose();
 				}
 				
 			}
 		});
 		btnAceptar.setBounds(335, 212, 89, 23);
 		contentPane.add(btnAceptar);
+		
+		
 	}
 }

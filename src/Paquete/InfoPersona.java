@@ -2,11 +2,13 @@ package Paquete;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.JobAttributes;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -18,8 +20,11 @@ public class InfoPersona extends JFrame implements Serializable {
 	private JPanel contentPane;
 	private JTextField nombre;
 	private JTextField dni;
-	
-	public InfoPersona() {
+	public Principal principal;
+	static Persona responsableAsignado;
+	Habitacion habiSeleccionada=new Habitacion();
+	Reserva nueva=new Reserva();
+	public InfoPersona(int seleccionada, FEcha desde, FEcha hasta) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -52,7 +57,11 @@ public class InfoPersona extends JFrame implements Serializable {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				responsableAsignado=new Persona(nombre.getText(), Integer.parseInt(dni.getText()));
+				habiSeleccionada=principal.BuscarHabitacion(seleccionada);
+				principal.Reservar(responsableAsignado, habiSeleccionada, desde, hasta);
+				JOptionPane.showMessageDialog(btnAceptar, "Creacion de la reserva realizada perfectamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			}
 		});

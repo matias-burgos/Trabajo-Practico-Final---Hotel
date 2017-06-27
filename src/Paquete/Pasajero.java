@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -18,7 +19,7 @@ public class Pasajero extends UserHotel implements Serializable
 	String ciudadOrigen;//Ciudad de origen.
 	String domicilioOrigen;//Domicilio en el que vive.
 	Habitacion actual;//Informacion sobre la habitacion en la que se encuentra.
-	
+	ArrayList<Habitacion >historial=new ArrayList<>();
 	
 	public Pasajero()
 	{
@@ -36,72 +37,17 @@ public class Pasajero extends UserHotel implements Serializable
 	
 	
 	
-	public void AgregarHistorial(Habitacion actual)//Crea un archivo y almacena las habitaciones en las que el pasajero estuvo.
+	public void setHistorial(Habitacion actual)//Crea un archivo y almacena las habitaciones en las que el pasajero estuvo.
 	{
-		FileOutputStream outHistorial;
+		historial.add(actual);
 		
-		try
-		{
-			outHistorial=new FileOutputStream("Historial.sd");
-			ObjectOutputStream escritura=new ObjectOutputStream(outHistorial);
-			escritura.writeObject(actual);//Asignacion de habitacion en el archivo.
-			System.out.println("La habitacion "+actual.getNumero()+" fue cargada en el historial del pasajero");
-			escritura.close();
-		}
-		catch(FileNotFoundException ex)
-		{
-			System.out.println("No se pudo crear el archivo: "+ex);
-		}
-		catch(IOException ex)
-		{
-			System.out.println("No se pudo crear el archivo:"+ex);
-		}
+	}
+	public Habitacion getActual()//Retorna la habitacion actual en la que se encuentra el pasajero.
+	{
+		return actual;
 		
 	}
 	
-	public void MostrarHistorial()//Muestra historial
-	{
-		FileInputStream inHistorial;
-		try
-		{
-			inHistorial=new FileInputStream("Historial.dat");
-			ObjectInputStream lectura=new ObjectInputStream(inHistorial);
-			Habitacion aux=(Habitacion)lectura.readObject();
-			lectura.close();
-		}
-		catch(NullPointerException ex)
-		{
-			System.out.println("El archivo esta vacio: "+ex);
-		}
-		catch(IOException ex)
-		{
-			System.out.println("No se pudo leer el archivo: "+ex);
-		}
-		catch(ClassNotFoundException ex)
-		{
-			System.out.println("No se pudo leer el archivo: "+ex);
-		}
-	}
-	
-	
-	public void AsignarHabitacion(Habitacion nueva)//Agarra la nueva habitacion en la que se encuentra y la guarda en el archivo de historial.
-	{
-		actual=nueva;
-		AgregarHistorial(actual);
-	}
-	/*
-	public void reservarHabitacion()//Terminar
-	{
-		
-		System.out.println("Ingresar el piso de la habitacion: ");
-		int piso=sc.nextInt();
-		System.out.println("Ingresar la cantidad de personas que habitaran la habitacion:  ");
-		int cant=sc.nextInt();
-		System.out.println("Ingresar ");
-		
-		
-	}
-	*/
 	
 	public String getCiudad()
 	{
@@ -111,15 +57,12 @@ public class Pasajero extends UserHotel implements Serializable
 	{
 		return domicilioOrigen;
 	}
-	public void MostrarPasajero()//Muestra todos los gets juntos.
+	public ArrayList getHistorial()
 	{
-		System.out.println("Tipo de usuario: Pasajero");
-		MostrarUsuario();
-		System.out.println("Ciudad de origen: "+getCiudad());
-		System.out.println("Domicilio de procedenci: "+getDomicilio());
-		System.out.println("contra: "+getContrasenha());
-		
+		return historial;
 	}
+
+	
 	
 	
 }
