@@ -57,15 +57,7 @@ public class UserHotel extends Persona implements Serializable {
 		System.out.println("Nombre de usuario: "+getUser());	
 	}
 	
-	/*public void InisioSesion(String nombre, String contraseña, String tipoUsuario)
-	{
-		if(tipoUsuario.equals("Pasajero"))
-		{
-			BuscarPasajero(String nombre, String contraseña);
-		}
-		
-		
-	}*/
+
 	
 	
 	public void CambiarContrasenha(String newContrasenha)//Realiza la comprobacion y el cambio de contraseña.

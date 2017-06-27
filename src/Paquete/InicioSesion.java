@@ -18,9 +18,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.awt.event.ActionEvent;
 
-public class InicioSesion extends JFrame {
+public class InicioSesion extends JFrame implements Serializable{
 
 	private JPanel contentPane;
 	//Siendo static puedo tener acceso a estas variables en cualquier lugar del proyecto.
@@ -75,19 +76,20 @@ public class InicioSesion extends JFrame {
 				case 1:
 					MenuPasajero nuevoPasajero=new MenuPasajero(nombreUsuario.getText());
 					nuevoPasajero.setVisible(true);
-					
+					dispose();
 					break;
 				case 0:
 					MenuConserje nuevoConserje=new MenuConserje(nombreUsuario.getText());
 					nuevoConserje.setVisible(true);
-					
+					dispose();
 					break;
 				case 2:
 					MenuAdministrador nuevoAdmin=new MenuAdministrador(nombreUsuario.getText());
 					nuevoAdmin.setVisible(true);
+					dispose();
 					break;
 				}
-				dispose();
+				
 				
 				
 			}
@@ -108,7 +110,7 @@ public class InicioSesion extends JFrame {
 		JButton btnCrearCuenta = new JButton("Crear Cuenta");
 		btnCrearCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CrearCuenta nueva=new CrearCuenta();
+				AsignarUsuario nueva=new AsignarUsuario();
 				nueva.setVisible(true);
 				setVisible(false);
 			}

@@ -84,7 +84,7 @@ public class Principal implements Serializable
 			}
 			lectura.close();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return retorno;
 	}
@@ -167,7 +167,7 @@ public class Principal implements Serializable
 		}
 		return listaHabitacion;
 	}
-	public ArrayList AperturaArchivoPasajeros()
+	public ArrayList AperturaArchivoPasajeros()//Abre el archivo de pasajeros y retorna la lista.
 	{
 		ArrayList<Pasajero>listaPasajero=new ArrayList<>();
 		FileInputStream salida;
@@ -182,19 +182,61 @@ public class Principal implements Serializable
 		return listaPasajero;
 		
 	}
-	public void CrearCuenta(String nombreAux,String apellidoAux,int dniAux,String contraseñaAux,String usuarioAux, String tipoUsuario)
+	public void CrearCuentaPasj(String nombre, int dni, String ciudad, String domicilio, String usuario, String contraseña)
 	{
-		if(tipoUsuario.equals("Administrador"))
-		{
-			Administrador nuevo=new Administrador(nombreAux, dniAux, usuarioAux, contraseñaAux);
+		CrearUsuario nuevo=new CrearUsuario();
+		nuevo.CrearCuentaPasajero(nombre, dni, ciudad, domicilio, usuario, contraseña);
+		FileInputStream salida;
+		FileOutputStream entrada;
+		try {
+			salida=new FileInputStream("Pasajeros.dat");
+			ObjectInputStream lectura=new ObjectInputStream(salida);
+			ArrayList<Pasajero>aux=(ArrayList<Pasajero>)lectura.readObject();
+			lectura.close();
+			entrada=new FileOutputStream("Pasajero.dat");
+			ObjectOutputStream escritura=new ObjectOutputStream(entrada);
+			escritura.writeObject(aux);
+			escritura.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		if(tipoUsuario.equals("Conserje"))
-		{
-			Conserje nuevo=new Conserje();
+	}
+	public void CrearCuentaAdmin(String nombre, int dni, String user, String contrasenha)
+	{
+		CrearUsuario nuevo=new CrearUsuario();
+		nuevo.CrearCuentaAdmin(nombre, dni, user, contrasenha);
+		FileInputStream salida;
+		FileOutputStream entrada;
+		try {
+			salida=new FileInputStream("Administradores.dat");
+			ObjectInputStream lectura=new ObjectInputStream(salida);
+			ArrayList<Administrador>aux=(ArrayList<Administrador>)lectura.readObject();
+			lectura.close();
+			entrada=new FileOutputStream("Administradores.dat");
+			ObjectOutputStream escritura=new ObjectOutputStream(entrada);
+			escritura.writeObject(aux);
+			escritura.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		if(tipoUsuario.equals("Pasajero"))
-		{
-			//Pasajero nuevo=new Pasajero(nombreAux, dniAux, usuarioAux, contraseñaAux);
+	}
+	public void CrearCuentaConserj(String nombre, int dni, String user, String contrasenha, String empleadoID)
+	{
+		CrearUsuario nuevo=new CrearUsuario();
+		nuevo.CrearCuentaConserje( nombre,  dni,  user,  contrasenha,  empleadoID);
+		FileInputStream salida;
+		FileOutputStream entrada;
+		try {
+			salida=new FileInputStream("Conserjes.dat");
+			ObjectInputStream lectura=new ObjectInputStream(salida);
+			ArrayList<Conserje>aux=(ArrayList<Conserje>)lectura.readObject();
+			lectura.close();
+			entrada=new FileOutputStream("Conserjes.dat");
+			ObjectOutputStream escritura=new ObjectOutputStream(entrada);
+			escritura.writeObject(aux);
+			escritura.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

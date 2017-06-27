@@ -15,6 +15,7 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
+		/*
 		Habitacion nuevaHabi=new Habitacion(1,1,2);
 		ArrayList<Habitacion>listHabi=new ArrayList<>();
 		listHabi.add(nuevaHabi);
@@ -25,9 +26,9 @@ public class Main {
 			escritura.writeObject(entrada);
 			escritura.close();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
-		
+		*/
 		Pasajero nuevoPasj=new Pasajero("pepe", 123, "Mardel", "kappa", "Pepe", "1230");
 		FileOutputStream entradaPasajeros;
 		try

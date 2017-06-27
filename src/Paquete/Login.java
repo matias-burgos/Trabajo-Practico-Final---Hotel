@@ -3,6 +3,7 @@ package Paquete;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Login implements Serializable
 {
@@ -17,13 +18,14 @@ public class Login implements Serializable
 		int rta=-1;
 		String nombre=InicioSesion.nombreUsuario.getText();
 		String contraseña=InicioSesion.contraseñaUsuario.getText();
+		ArrayList<Conserje>auxConserje=new ArrayList<>();
 		FileInputStream salidaConserje;
 		try {
 			salidaConserje=new FileInputStream("Conserjes.dat");
 			ObjectInputStream lecturaConserje=new ObjectInputStream(salidaConserje);
-			Conserje auxConserje=(Conserje)lecturaConserje.readObject();
+			ArrayList<Conserje>auxLista=(ArrayList<Conserje>)lecturaConserje.readObject();
 			//Recorrido del archivo de conserjes.
-			while(auxConserje!=null)//Recorrido del archivo
+			for(Conserje aux:auxLista)//Recorrido del archivo
 			{
 				//Comprobacion.
 				if(nombre.equals(auxConserje.getUser()) && contraseña.equals(auxConserje.getContrasenha())/* nombre.equals(nombreEjemplo) && contraseña.equals(contraseñaEjemplo)*/)
